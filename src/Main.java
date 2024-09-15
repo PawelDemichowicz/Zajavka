@@ -11,8 +11,7 @@ public class Main {
                 "ADD PERSON(Zbigniew_Ratownik)",
                 "PROCESS",
                 "LEAVE PERSON(Tomasz_Romański_2)",
-                "LEAVE PERSON(Mariusz_Wilczek)",
-                "PROCESS",
+                "LEAVE PERSON(Mariusz_Wilczekkk)",
                 "PROCESS",
                 "PROCESS"
         );
