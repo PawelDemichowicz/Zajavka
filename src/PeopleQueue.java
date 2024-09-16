@@ -1,10 +1,8 @@
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class PeopleQueue {
     private final HashMap<String, Integer> peopleNameCounter = new HashMap<>();
-    private final Queue<Person> peopleQueue = new LinkedList<>();
+    private final Deque<Person> peopleQueue = new LinkedList<>();
 
     void processInput(String input) {
         if (input.contains("ADD PERSON")) {
@@ -14,13 +12,14 @@ public class PeopleQueue {
         } else if (input.contains("LEAVE PERSON")) {
             processLeavePerson(input);
         } else {
-            System.out.println("I don't understand. Please use correct command.");
+            System.out.println("I don't understand. Please use correct command.\n");
         }
     }
 
     private void processAddPerson(String input) {
         String personInput = input.substring(input.indexOf("(") + 1, input.indexOf(")"));
-        String[] personData = personInput.split("_");
+        String[] personData = personInput.split("[_,]");
+        boolean isVip = false;
 
         if (personData.length < 2) {
             System.out.printf("Provided command: %s%n", input);
@@ -28,15 +27,29 @@ public class PeopleQueue {
             return;
         }
 
+        if (personData.length > 2) {
+            if ("VIP".equals(personData[2])) {
+                isVip = true;
+            } else {
+                System.out.printf("Provided command: %s%n", input);
+                System.out.println("I don't understand. Please use correct command.\n");
+            }
+        }
+
         int personCounter = peopleNameCounter.getOrDefault(personInput, 0) + 1;
         peopleNameCounter.put(personInput, personCounter);
 
-        Person person = new Person(personData[0], personData[1], personCounter);
-
-        boolean personAdded = peopleQueue.offer(person);
+        Person person;
+        if (isVip) {
+            person = new Person(personData[0], personData[1], personCounter, isVip);
+            peopleQueue.addFirst(person);
+        } else {
+            person = new Person(personData[0], personData[1], personCounter);
+            peopleQueue.addLast(person);
+        }
 
         System.out.printf("%s%n", input);
-        System.out.printf("%s came to the queue: %s%n", person, personAdded);
+        System.out.printf("%s came to the queue: %s%n", person, true);
         System.out.printf("Queue: %s%n%n", peopleQueue);
     }
 
@@ -73,7 +86,7 @@ public class PeopleQueue {
 
         if (!remove) {
             System.out.printf("Are you sure you meant %s%n", personToRemove);
-            System.out.printf("%s is not standing in the%n%n", personToRemove);
+            System.out.printf("%s is not standing in the line %n%n", personToRemove);
             return;
         }
 

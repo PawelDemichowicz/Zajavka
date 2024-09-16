@@ -4,11 +4,19 @@ public class Person {
     private final String name;
     private final String surname;
     private final Integer counter;
+    private boolean isVip;
 
     public Person(String name, String surname, Integer counter) {
         this.name = name;
         this.surname = surname;
         this.counter = counter;
+    }
+
+    public Person(String name, String surname, Integer counter, boolean isVip) {
+        this.name = name;
+        this.surname = surname;
+        this.counter = counter;
+        this.isVip = isVip;
     }
 
     @Override
@@ -30,6 +38,6 @@ public class Person {
 
     @Override
     public String toString() {
-        return name + '_' + surname + '_' + counter;
+        return name + '_' + surname + '_' + counter + (isVip ? "_VIP" : "");
     }
 }
