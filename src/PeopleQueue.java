@@ -22,6 +22,12 @@ public class PeopleQueue {
         String personInput = input.substring(input.indexOf("(") + 1, input.indexOf(")"));
         String[] personData = personInput.split("_");
 
+        if (personData.length < 2) {
+            System.out.printf("Provided command: %s%n", input);
+            System.out.println("Wrong name or surname. Please provide correct command.\n");
+            return;
+        }
+
         int personCounter = peopleNameCounter.getOrDefault(personInput, 0) + 1;
         peopleNameCounter.put(personInput, personCounter);
 
@@ -44,6 +50,12 @@ public class PeopleQueue {
         String personInput = input.substring(input.indexOf("(") + 1, input.indexOf(")"));
         String[] personData = personInput.split("_");
         int personCounter;
+
+        if (personData.length < 2) {
+            System.out.printf("Provided command: %s%n", input);
+            System.out.println("Wrong name or surname. Please provide correct command.\n");
+            return;
+        }
 
         if (personData.length < 3) {
             personCounter = 1;
