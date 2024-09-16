@@ -41,6 +41,11 @@ public class PeopleQueue {
     }
 
     private void processMovePerson(String input) {
+        if (peopleQueue.isEmpty()) {
+            System.out.println("Queue is already empty");
+            System.out.println("Please provide another command\n");
+            return;
+        }
         System.out.printf("%s%n", input);
         System.out.printf("Processing queue: %s arrived at the store%n", peopleQueue.remove());
         System.out.printf("Queue: %s%n%n", peopleQueue);
