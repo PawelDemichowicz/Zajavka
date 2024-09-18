@@ -17,13 +17,12 @@ public class PeopleQueue {
     }
 
     private void processAddPerson(String input) {
-        String personInput = input.substring(input.indexOf("(") + 1, input.indexOf(")"));
+        String personInput = extractPersonInput(input);
         String[] personData = personInput.split("[_,]");
         boolean isVip = false;
 
-        if (personData.length < 2) {
-            System.out.printf("Provided command: %s%n", input);
-            System.out.println("Wrong name or surname. Please provide correct command.\n");
+        if (isValidPersonData(personData)) {
+            printInvalidCommandMessage(input);
             return;
         }
 
@@ -31,32 +30,26 @@ public class PeopleQueue {
             if ("VIP".equals(personData[2])) {
                 isVip = true;
             } else {
-                System.out.printf("Provided command: %s%n", input);
-                System.out.println("I don't understand. Please use correct command.\n");
+                printInvalidCommandMessage(input);
+                return;
             }
         }
 
-        int personCounter = peopleNameCounter.getOrDefault(personInput, 0) + 1;
-        peopleNameCounter.put(personInput, personCounter);
+        Person person = createPerson(personInput, personData, isVip);
 
-        Person person;
         if (isVip) {
-            person = new Person(personData[0], personData[1], personCounter, isVip);
             peopleQueue.addFirst(person);
         } else {
-            person = new Person(personData[0], personData[1], personCounter);
             peopleQueue.addLast(person);
         }
 
-        System.out.printf("%s%n", input);
-        System.out.printf("%s came to the queue: %s%n", person, true);
-        System.out.printf("Queue: %s%n%n", peopleQueue);
+        printPersonAddedMessage(input, person);
     }
 
     private void processMovePerson(String input) {
         if (peopleQueue.isEmpty()) {
-            System.out.println("Queue is already empty");
-            System.out.println("Please provide another command\n");
+            System.out.printf("Queue is already empty%n");
+            System.out.printf("Please provide another command%n%n");
             return;
         }
         System.out.printf("%s%n", input);
@@ -65,22 +58,15 @@ public class PeopleQueue {
     }
 
     private void processLeavePerson(String input) {
-        String personInput = input.substring(input.indexOf("(") + 1, input.indexOf(")"));
+        String personInput = extractPersonInput(input);
         String[] personData = personInput.split("_");
-        int personCounter;
 
-        if (personData.length < 2) {
-            System.out.printf("Provided command: %s%n", input);
-            System.out.println("Wrong name or surname. Please provide correct command.\n");
+        if (isValidPersonData(personData)) {
+            printInvalidCommandMessage(input);
             return;
         }
 
-        if (personData.length < 3) {
-            personCounter = 1;
-        } else {
-            personCounter = Integer.parseInt(personData[2]);
-        }
-
+        int personCounter = personData.length < 3 ? 1 : Integer.parseInt(personData[2]);
         Person personToRemove = new Person(personData[0], personData[1], personCounter);
         boolean remove = peopleQueue.remove(personToRemove);
 
@@ -92,6 +78,31 @@ public class PeopleQueue {
 
         System.out.printf("%s%n", input);
         System.out.printf("Leaving queue: %s%n", personInput);
+        System.out.printf("Queue: %s%n%n", peopleQueue);
+    }
+
+    private String extractPersonInput(String input) {
+        return input.substring(input.indexOf("(") + 1, input.indexOf(")"));
+    }
+
+    private boolean isValidPersonData(String[] personData) {
+        return personData.length < 2;
+    }
+
+    private void printInvalidCommandMessage(String input) {
+        System.out.printf("Provided command: %s%n", input);
+        System.out.printf("Please provide correct command.%n%n");
+    }
+
+    private Person createPerson(String personInput, String[] personData, boolean isVip) {
+        int personCounter = peopleNameCounter.getOrDefault(personInput, 0) + 1;
+        peopleNameCounter.put(personInput, personCounter);
+        return isVip ? new Person(personData[0], personData[1], personCounter, true) : new Person(personData[0], personData[1], personCounter);
+    }
+
+    private void printPersonAddedMessage(String input, Person person) {
+        System.out.printf("%s%n", input);
+        System.out.printf("%s came to the queue: %s%n", person, true);
         System.out.printf("Queue: %s%n%n", peopleQueue);
     }
 }
