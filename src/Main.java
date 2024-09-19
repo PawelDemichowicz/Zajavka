@@ -5,22 +5,21 @@ public class Main {
         PeopleQueue people = new PeopleQueue();
         List<String> input = List.of(
                 "ADD PERSON(Tomasz_Romański)",
-                "ADD PERSON(Rafał_Adamczuk)",
+                "ADD PERSON(RafałAdamczuk)",
                 "ADD PERSON(Tomasz_Romański)",
                 "ADD PERSON(Mariusz_Wilczek_VIIIP)",
                 "ADD PERSON(Mariusz_Wilczkowski_VIP)",
+                "ADD PERSON(Mariusz_Wilczkowski)",
                 "ADD PERSON(Mariusz_Wilczkowski_VIP)",
-                "ADD PERSON(Zbigniew_Ratownik)",
-                "ADD PERSON(Zbigniew_Ratownik,VIP)",
-                "PROCESS",
-                "LEAVE PERSON(Mariusz_Wilczkowski)",
-                "LEAVE PERSON(Tomasz_Romański_2)",
-                "LEAVE PERSON(Mariusz_Wilczekkk)",
-                "PROCESS",
+                "ADD PERSON(Mariusz_Wilczkowski_VIP)",
+                "ADD PERSON(Mariusz_Wilczkowski_VIP)",
+                "LEAVE PERSON(Mariusz_Wilczkowski_VIP)",
+                "LEAVE PERSON(Mariusz_Wilczkowski_VIP)",
+                "LEAVE PERSON(Mariusz_Wilczkowski_VIP)",
+                "LEAVE PERSON(Mariusz_Wilczkowski_VIP)",
                 "ADD PERSON(Zbigniew_)",
                 "LEAVE PERSON(Mariusz_)",
-                "PROCESS",
-                "LEAVE PERSON(Tomasz_Romański_2)"
+                "PROCESS"
         );
 
         for (String command : input) {
