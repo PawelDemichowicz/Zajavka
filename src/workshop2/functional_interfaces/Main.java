@@ -11,6 +11,7 @@ public class Main {
     public static void main(String[] args) {
         generateProducer();
         generateTransformer();
+        generateMyConsumer();
     }
 
     private static void generateProducer() {
@@ -34,5 +35,13 @@ public class Main {
         UnaryOperator<BigDecimal> unaryOperator = Transformer.customUnaryOperator();
         Optional<BigDecimal> optional2 = Optional.of(BigDecimal.valueOf(3.14)).map(unaryOperator);
         System.out.println(optional2);
+    }
+
+    private static void generateMyConsumer() {
+        MyConsumer myConsumer = new MyConsumer();
+
+        myConsumer.consumeSupplier(() -> "Zajavka");
+        myConsumer.consumeConsumer(System.out::println);
+        myConsumer.consumeFunction((String::length));
     }
 }
