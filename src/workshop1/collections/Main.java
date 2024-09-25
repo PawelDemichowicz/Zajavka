@@ -1,3 +1,5 @@
+package workshop1.collections;
+
 import java.util.Scanner;
 
 public class Main {
