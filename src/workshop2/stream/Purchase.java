@@ -20,6 +20,22 @@ public class Purchase {
         this.when = when;
     }
 
+    public Client getBuyer() {
+        return buyer;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public long getQuantity() {
+        return quantity;
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
     public enum Delivery {
         IN_POST,
         UPS,

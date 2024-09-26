@@ -1,5 +1,7 @@
 package workshop2.stream;
 
+import java.util.Objects;
+
 public class Product implements Comparable<Product> {
     private final String id;
     private final String name;
@@ -13,12 +15,31 @@ public class Product implements Comparable<Product> {
         this.price = price;
     }
 
+    public Money getPrice() {
+        return price;
+    }
+
     @Override
     public int compareTo(final Product o) {
         int thisNumber = Integer.parseInt(id.substring(7));
         int otherNumber = Integer.parseInt(o.id.substring(7));
         return thisNumber - otherNumber;
     }
+
+    @Override
+    public final boolean equals(Object object) {
+        if (this == object) return true;
+        if (!(object instanceof Product)) return false;
+
+        Product product = (Product) object;
+        return Objects.equals(id, product.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
+    }
+
     public enum Category {
         HOBBY,
         CLOTHES,

@@ -11,6 +11,14 @@ public class Money {
         this.currency = currency;
     }
 
+    public BigDecimal getValue() {
+        return value;
+    }
+
+    public Currency getCurrency() {
+        return currency;
+    }
+
     public enum Currency {
         PLN,
         EUR

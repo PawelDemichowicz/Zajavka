@@ -19,6 +19,10 @@ public class Client implements Comparable<Client> {
         this.city = city;
     }
 
+    public String getId() {
+        return id;
+    }
+
     @Override
     public int compareTo(final Client o) {
         return this.id.compareTo(o.id);
