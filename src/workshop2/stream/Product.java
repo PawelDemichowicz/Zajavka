@@ -15,6 +15,14 @@ public class Product implements Comparable<Product> {
         this.price = price;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
     public Money getPrice() {
         return price;
     }
@@ -45,5 +53,12 @@ public class Product implements Comparable<Product> {
         CLOTHES,
         GARDEN,
         AUTOMOTIVE
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id='" + id + '\'' +
+                '}';
     }
 }

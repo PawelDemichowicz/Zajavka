@@ -23,6 +23,10 @@ public class Client implements Comparable<Client> {
         return id;
     }
 
+    public BigInteger getPesel() {
+        return pesel;
+    }
+
     @Override
     public int compareTo(final Client o) {
         return this.id.compareTo(o.id);
@@ -39,5 +43,16 @@ public class Client implements Comparable<Client> {
     @Override
     public int hashCode() {
         return Objects.hash(pesel);
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", pesel=" + pesel +
+                ", city='" + city + '\'' +
+                '}';
     }
 }
