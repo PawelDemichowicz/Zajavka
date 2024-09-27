@@ -120,7 +120,7 @@ public class Statistics {
                 ));
         Comparator<? super Pair<String, Long>> customComparator = Comparator.comparing((Pair<String, Long> p) -> p.getV())
                 .reversed()
-                .thenComparing((Pair<String, Long> p) -> p.getU());
+                .thenComparing(Pair::getU);
 
         return purchaseList.entrySet().stream()
                 .map(e -> new Pair<>(e.getKey(), e.getValue()))
@@ -129,5 +129,39 @@ public class Statistics {
                 .findFirst().orElseThrow(() -> new RuntimeException("Empty purchases list."));
     }
 
+    public static Map<Integer, Map.Entry<Long, List<Product.Category>>> productCategoryByClientAge(Integer age) {
+        Map<Integer, Map<Product.Category, Long>> collectFilledCategoriesWithMoreThanZeroTransaction =
+                purchases.stream()
+                        .filter(p -> p.getBuyer().getAge() > age)
+                        .collect(Collectors.groupingBy(
+                                (Purchase p) -> p.getBuyer().getAge(),
+                                Collectors.groupingBy(
+                                        (Purchase p) -> p.getProduct().getCategory(),
+                                        Collectors.counting()
+                                )
+                        ));
+
+        Map<Integer, Map<Long, List<Product.Category>>> collectFilledCategoriesWithZeroTransaction =
+                collectFilledCategoriesWithMoreThanZeroTransaction.entrySet().stream()
+                        .collect(Collectors.toMap(
+                                Map.Entry::getKey,
+                                e -> Arrays.stream(Product.Category.values())
+                                        .collect(Collectors.toMap(
+                                                category -> e.getValue().getOrDefault(category, 0L),
+                                                List::of,
+                                                (currentList, nextList) ->
+                                                        Stream.concat(currentList.stream(), nextList.stream())
+                                                                .collect(Collectors.toList())
+                                        ))
+                        ));
+
+        return collectFilledCategoriesWithZeroTransaction.entrySet().stream()
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        e -> e.getValue().entrySet().stream()
+                                .min(Map.Entry.comparingByKey())
+                                .orElseThrow(RuntimeException::new)
+                ));
+    }
 
 }

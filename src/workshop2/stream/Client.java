@@ -1,6 +1,7 @@
 package workshop2.stream;
 
 import java.math.BigInteger;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Client implements Comparable<Client> {
@@ -25,6 +26,20 @@ public class Client implements Comparable<Client> {
 
     public BigInteger getPesel() {
         return pesel;
+    }
+
+    public Integer getAge() {
+        String pesel = String.valueOf(this.getPesel());
+        int yearOfBirth = Integer.parseInt(pesel.substring(0, 2));
+        int monthOfBirth = Integer.parseInt(pesel.substring(2, 4));
+
+        if (monthOfBirth > 20) {
+            yearOfBirth += 2000;
+        } else {
+            yearOfBirth += 1900;
+        }
+
+        return LocalDate.now().getYear() - yearOfBirth;
     }
 
     @Override

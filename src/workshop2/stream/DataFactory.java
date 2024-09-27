@@ -11,7 +11,7 @@ public class DataFactory {
     public static List<Purchase> produce() {
         List<Purchase> purchaseList = new ArrayList<>();
         // Clients
-        Client client0 = new Client("client0", "Roman", "Kowalski", BigInteger.valueOf(65814267854L), "Poznań");
+        Client client0 = new Client("client0", "Roman", "Kowalski", BigInteger.valueOf(65014267854L), "Poznań");
         Client client1 = new Client("client1", "Karolina", "Nowak", BigInteger.valueOf(66060897231L), "Warszawa");
         Client client2 = new Client("client2", "Marta", "Romańczuk", BigInteger.valueOf(62063073633L), "Szczecin");
         Client client3 = new Client("client3", "Andrzej", "Stefański", BigInteger.valueOf(62051084215L), "Kraków");

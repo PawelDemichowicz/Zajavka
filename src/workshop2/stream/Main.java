@@ -15,5 +15,6 @@ public class Main {
         PrintingUtils.printMap(Statistics.soldProductsPerClientBirthYearUsingGroupingBy());
         PrintingUtils.printMap(Statistics.soldProductsPerClientBirthYearUsingToMap());
         System.out.println(Statistics.secondPopularProductSold());
+        PrintingUtils.printMap(Statistics.productCategoryByClientAge(50));
     }
 }
