@@ -164,4 +164,26 @@ public class Statistics {
                 ));
     }
 
+    public static Map.Entry<Long, Set<String>> clientsPerAgeWithMostBoughtProducts() {
+        Map<String, Long> quantityByYear = purchases.stream()
+                .collect(Collectors.groupingBy(
+                        p -> p.getBuyer().getPesel().toString().substring(0, 2),
+                        Collectors.mapping(
+                                Purchase::getQuantity,
+                                Collectors.reducing(0L, Long::sum)
+                        )
+                ));
+
+        Map<Long, Set<String>> mostQuantityByYear = quantityByYear.entrySet().stream()
+                .collect(Collectors.toMap(
+                        Map.Entry::getValue,
+                        e -> Set.of(e.getKey()),
+                        (currentSet, nextSet) -> Stream.concat(currentSet.stream(), nextSet.stream())
+                                .collect(Collectors.toSet())
+                ));
+
+        return mostQuantityByYear.entrySet().stream()
+                .max(Map.Entry.comparingByKey())
+                .orElseThrow(RuntimeException::new);
+    }
 }
