@@ -1,4 +1,4 @@
-package workshop3;
+package workshop3.domain;
 
 import java.math.BigDecimal;
 

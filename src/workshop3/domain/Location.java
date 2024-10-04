@@ -1,4 +1,4 @@
-package workshop3;
+package workshop3.domain;
 
 public class Location {
     private final String country;
