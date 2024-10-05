@@ -8,4 +8,12 @@ public class Location {
         this.country = country;
         this.city = city;
     }
+
+    @Override
+    public String toString() {
+        return "Location{" +
+                "country='" + country + '\'' +
+                ", city='" + city + '\'' +
+                '}';
+    }
 }
