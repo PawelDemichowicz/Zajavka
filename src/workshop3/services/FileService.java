@@ -11,14 +11,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class FileService {
     private final PurchaseMappingService purchaseMappingService = new PurchaseMappingService();
 
     public List<Purchase> loadData(Path path) {
-        try {
-            return Files.lines(path)
-                    .skip(1)
+        try (Stream<String> purchasesData = Files.lines(path)) {
+            return purchasesData.skip(1)
                     .map(purchaseMappingService::mapPurchase)
                     .collect(Collectors.toList());
         } catch (IOException e) {
