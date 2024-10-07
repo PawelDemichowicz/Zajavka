@@ -1,0 +1,1 @@
+Purchase{id=937, person=Person{firstName='Charmaine', lastName='Losseljong', email='closseljongq0@joomla.org', ipAddress='231.4.10.164'}, car=Car{color='#67bed4', carVin='2T2BK1BA1BC047234', carCompany='Tesla', carModel='Roadster', carModelYear='2010', carPrice=7056.76}, location=Location{country='Czech Republic', city='Černožice'}, date=2020-12-09}

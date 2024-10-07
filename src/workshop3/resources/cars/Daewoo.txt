@@ -1,0 +1,1 @@
+Purchase{id=646, person=Person{firstName='Bamby', lastName='Bampfield', email='bbampfieldhx@prlog.org', ipAddress='20.48.247.153'}, car=Car{color='#3e57de', carVin='JTEBU5JR5C5108270', carCompany='Daewoo', carModel='Leganza', carModelYear='2001', carPrice=94984.18}, location=Location{country='Czech Republic', city='Svoboda nad Úpou'}, date=2020-12-06}

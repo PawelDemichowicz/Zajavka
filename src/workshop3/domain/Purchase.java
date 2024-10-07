@@ -17,6 +17,10 @@ public class Purchase {
         this.date = date;
     }
 
+    public Car getCar() {
+        return car;
+    }
+
     @Override
     public String toString() {
         return "Purchase{" +

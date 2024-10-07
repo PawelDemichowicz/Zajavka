@@ -19,6 +19,10 @@ public class Car {
         this.carPrice = carPrice;
     }
 
+    public String getCarCompany() {
+        return carCompany;
+    }
+
     @Override
     public String toString() {
         return "Car{" +

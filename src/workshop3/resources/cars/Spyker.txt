@@ -1,0 +1,1 @@
+Purchase{id=559, person=Person{firstName='Antoine', lastName='Lynnitt', email='alynnittfi@dyndns.org', ipAddress='91.125.49.240'}, car=Car{color='#8c25fa', carVin='5UXZV4C5XBL433882', carCompany='Spyker', carModel='C8 Double 12 S', carModelYear='2006', carPrice=96561.56}, location=Location{country='Poland', city='Golina'}, date=2020-08-13}
