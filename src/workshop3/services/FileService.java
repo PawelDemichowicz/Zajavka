@@ -14,6 +14,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class FileService {
+    public static final String RESOURCES_CARS = "src/workshop3/resources/cars/";
+    public static final String FILE_HEADER = "id,first_name,last_name,email,ip_address,color,car_vin,car_company," +
+            "car_model,car_model_year,car_price,country,city,date";
     private final PurchaseMappingService purchaseMappingService = new PurchaseMappingService();
 
     public List<Purchase> loadData(Path path) {
@@ -27,7 +30,11 @@ public class FileService {
     }
 
     public void writeDataPerCarCompany(List<Purchase> purchases) {
-        Path basepath = Paths.get("src/workshop3/resources/cars");
+        try {
+            Files.createDirectories(Paths.get(RESOURCES_CARS));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         Map<Object, List<Purchase>> carCompanyList = purchases.stream()
                 .collect(Collectors.groupingBy(
                         p -> p.getCar().getCarCompany(),
@@ -36,10 +43,11 @@ public class FileService {
                 ));
 
         for (Map.Entry<Object, List<Purchase>> entry : carCompanyList.entrySet()) {
-            Path carCompanyPath = Paths.get(basepath.toString(), entry.getKey() + ".txt");
+            Path carCompanyPath = Paths.get(RESOURCES_CARS, "purchase-of-" + entry.getKey() + ".csv");
             try (BufferedWriter bufferedWriter = Files.newBufferedWriter(carCompanyPath)) {
+                bufferedWriter.write(FILE_HEADER);
                 for (Purchase purchase : entry.getValue()) {
-                    bufferedWriter.write(String.valueOf(purchase));
+                    bufferedWriter.write(purchaseMappingService.mapPurchaseToCSV(purchase));
                     bufferedWriter.newLine();
                 }
             } catch (IOException e) {

@@ -19,8 +19,28 @@ public class Car {
         this.carPrice = carPrice;
     }
 
+    public String getColor() {
+        return color;
+    }
+
+    public String getCarVin() {
+        return carVin;
+    }
+
     public String getCarCompany() {
         return carCompany;
+    }
+
+    public String getCarModel() {
+        return carModel;
+    }
+
+    public String getCarModelYear() {
+        return carModelYear;
+    }
+
+    public BigDecimal getCarPrice() {
+        return carPrice;
     }
 
     @Override

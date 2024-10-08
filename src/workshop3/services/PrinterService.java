@@ -10,12 +10,13 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class PrinterService {
+    private final FileService fileService = new FileService();
     public void printCountedPurchasePerCompany() {
-        Path carsPath = Paths.get("src/workshop3/resources/cars");
+        Path carsPath = Paths.get(FileService.RESOURCES_CARS);
 
         try (Stream<Path> carPaths = Files.list(carsPath)) {
             TreeMap<String, Long> carCompanyPurchases = carPaths.collect(Collectors.toMap(
-                    p -> p.getFileName().toString().replace(".txt", ""),
+                    p -> p.getFileName().toString().replace(".csv", ""),
                     PrinterService::countPurchasesByCompany,
                     Long::sum,
                     TreeMap::new
@@ -23,7 +24,7 @@ public class PrinterService {
 
             carCompanyPurchases.entrySet().stream()
                     .sorted(Map.Entry.<String, Long>comparingByValue().reversed())
-                    .forEach(entry -> System.out.printf("%s: %s%n", entry.getKey(), entry.getValue()));
+                    .forEach(entry -> System.out.printf("%s: %s%n", entry.getKey().replace("purchase-of-" ,""), entry.getValue()));
 
         } catch (IOException e) {
             throw new RuntimeException(e);

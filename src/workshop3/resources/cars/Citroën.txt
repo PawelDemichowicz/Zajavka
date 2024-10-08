@@ -1,1 +1,0 @@
-Purchase{id=267, person=Person{firstName='Cori', lastName='Tarr', email='ctarr7e@skype.com', ipAddress='60.31.145.105'}, car=Car{color='#e208c9', carVin='WBXPC93587W702935', carCompany='Citroën', carModel='2CV', carModelYear='1948', carPrice=21373.33}, location=Location{country='Poland', city='Świętajno'}, date=2020-02-10}

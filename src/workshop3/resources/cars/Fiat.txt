@@ -1,1 +1,0 @@
-Purchase{id=579, person=Person{firstName='Delcine', lastName='Cottisford', email='dcottisfordg2@java.com', ipAddress='233.202.63.210'}, car=Car{color='#f1e5f3', carVin='3N1AB6AP7CL730351', carCompany='Fiat', carModel='Nuova 500', carModelYear='2012', carPrice=66508.75}, location=Location{country='Poland', city='Sieroszewice'}, date=2020-07-10}

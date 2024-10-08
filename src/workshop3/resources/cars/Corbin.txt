@@ -1,1 +1,0 @@
-Purchase{id=72, person=Person{firstName='Maurits', lastName='Dymock', email='mdymock1z@about.com', ipAddress='35.247.231.46'}, car=Car{color='#d6cb92', carVin='JTEBC3EH3C2729369', carCompany='Corbin', carModel='Sparrow', carModelYear='2004', carPrice=73545.83}, location=Location{country='Denmark', city='København'}, date=2020-05-29}

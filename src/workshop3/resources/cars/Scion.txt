@@ -1,1 +1,0 @@
-Purchase{id=199, person=Person{firstName='Brian', lastName='Toffalo', email='btoffalo5i@statcounter.com', ipAddress='78.19.48.188'}, car=Car{color='#907a96', carVin='TRUSC28N721996511', carCompany='Scion', carModel='xD', carModelYear='2008', carPrice=40805.33}, location=Location{country='Poland', city='Janowiec'}, date=2020-10-14}

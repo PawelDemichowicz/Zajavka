@@ -1,1 +1,0 @@
-Purchase{id=77, person=Person{firstName='Addison', lastName='Kleinstub', email='akleinstub24@prnewswire.com', ipAddress='97.50.102.136'}, car=Car{color='#530864', carVin='WAUJT54B53N474177', carCompany='Panoz', carModel='Esperante', carModelYear='2005', carPrice=53455.19}, location=Location{country='Czech Republic', city='Psáry'}, date=2020-08-28}

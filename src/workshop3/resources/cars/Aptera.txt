@@ -1,1 +1,0 @@
-Purchase{id=595, person=Person{firstName='Uta', lastName='Stych', email='ustychgi@amazonaws.com', ipAddress='87.95.129.26'}, car=Car{color='#abcf0d', carVin='WA1UFAFL7FA845805', carCompany='Aptera', carModel='Typ-1', carModelYear='2008', carPrice=24570.34}, location=Location{country='Czech Republic', city='Vrdy'}, date=2020-12-15}

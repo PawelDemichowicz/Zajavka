@@ -34,4 +34,22 @@ public class PurchaseMappingService {
                 date
         );
     }
+
+    public String mapPurchaseToCSV(Purchase purchase) {
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s",
+                purchase.getId(),
+                purchase.getPerson().getFirstName(),
+                purchase.getPerson().getLastName(),
+                purchase.getPerson().getEmail(),
+                purchase.getPerson().getIpAddress(),
+                purchase.getCar().getColor(),
+                purchase.getCar().getCarVin(),
+                purchase.getCar().getCarCompany(),
+                purchase.getCar().getCarModel(),
+                purchase.getCar().getCarModelYear(),
+                purchase.getCar().getCarPrice(),
+                purchase.getLocation().getCountry(),
+                purchase.getLocation().getCity(),
+                purchase.getDate());
+    }
 }

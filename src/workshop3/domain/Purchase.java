@@ -17,8 +17,24 @@ public class Purchase {
         this.date = date;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
     public Car getCar() {
         return car;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public LocalDate getDate() {
+        return date;
     }
 
     @Override
