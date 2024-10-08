@@ -17,5 +17,7 @@ public class Main {
         List<Purchase> purchaseList = fileService.loadData(path);
         fileService.writeDataPerCarCompany(purchaseList);
         printerService.printCountedPurchasePerCompany();
+        System.out.println();
+        printerService.printCarCompanyPerFileSize();
     }
 }
