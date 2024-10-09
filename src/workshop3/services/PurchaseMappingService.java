@@ -56,4 +56,8 @@ public class PurchaseMappingService {
     public String mapPurchaseToReport(int id, String company, String model, BigDecimal averagePrice, long count) {
         return String.format("%s,%s,%s,%s,%s", id, company, model, averagePrice, count);
     }
+
+    public String mapAmountPurchasesWithDateToReport(int id, LocalDate date, long count) {
+        return String.format("%s,%s,%s", id, date, count);
+    }
 }

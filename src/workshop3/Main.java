@@ -19,7 +19,8 @@ public class Main {
         printerService.printCountedPurchasePerCompany();
         System.out.println();
         printerService.printCarCompanyPerFileSize();
-        fileService.generateReportWithSoldCarStats(FileService.getPurchasesByCompany(purchaseList));
+        fileService.generateReportWithSoldCarStats(fileService.getPurchasesByCompany(purchaseList));
+        fileService.generateReportWithSoldCarsPerDate(purchaseList);
 
     }
 }

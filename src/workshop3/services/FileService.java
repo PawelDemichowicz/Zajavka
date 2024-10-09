@@ -10,6 +10,8 @@ import java.math.RoundingMode;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -22,7 +24,8 @@ public class FileService {
     public static final String REPORTS = "src/workshop3/resources/reports/";
     public static final String RESOURCES_CARS_HEADER = "id,first_name,last_name,email,ip_address,color,car_vin,car_company," +
             "car_model,car_model_year,car_price,country,city,date";
-    public static final String REPORTS_HEADER = "id,company,model,average_price,amount_of_purchases";
+    public static final String PURCHASES_BY_COMPANY_AND_CAR = "id,company,model,average_price,amount_of_purchases";
+    public static final String PURCHASES_BY_DATE = "id,date,amount_of_purchases";
 
     private final PurchaseMappingService purchaseMappingService = new PurchaseMappingService();
 
@@ -84,11 +87,44 @@ public class FileService {
                                 innerEntry.getValue().getV())))
                 .collect(Collectors.toList());
 
-        Path path = Paths.get(REPORTS, "purchases-report.csv");
-        saveToFile(reportData, path, REPORTS_HEADER);
+        Path path = Paths.get(REPORTS, "purchases-per-company-and-model-report.csv");
+        saveToFile(reportData, path, PURCHASES_BY_COMPANY_AND_CAR);
     }
 
-    public static Map<String, List<Purchase>> getPurchasesByCompany(List<Purchase> purchases) {
+    public void generateReportWithSoldCarsPerDate(List<Purchase> purchases) {
+        TreeMap<LocalDate, Long> mapByDate = purchases.stream()
+                .collect(Collectors.groupingBy(
+                        Purchase::getDate,
+                        TreeMap::new,
+                        Collectors.counting()
+                ));
+
+        AtomicInteger byDateCounter = new AtomicInteger(1);
+        List<String> daysWithSoldCarsSortedByDate = mapByDate.entrySet().stream()
+                .map(entry -> purchaseMappingService.mapAmountPurchasesWithDateToReport(
+                        byDateCounter.getAndIncrement(),
+                        entry.getKey(),
+                        entry.getValue()))
+                .collect(Collectors.toList());
+
+        Path byDateCounterPath = Paths.get(REPORTS, "purchases-sorted-by-date-report.csv");
+        saveToFile(daysWithSoldCarsSortedByDate, byDateCounterPath, PURCHASES_BY_DATE);
+
+        AtomicInteger byCountCounter = new AtomicInteger(1);
+        List<String> daysWithSoldCarsSortedByCount = mapByDate.entrySet().stream()
+                .map(entry -> new Pair<>(entry.getKey(), entry.getValue()))
+                .sorted(Comparator.comparing((Pair<LocalDate, Long> p) -> p.getV()).reversed())
+                .map(pair -> purchaseMappingService.mapAmountPurchasesWithDateToReport(
+                        byCountCounter.getAndIncrement(),
+                        pair.getU(),
+                        pair.getV()))
+                .collect(Collectors.toList());
+
+        Path byCountPath = Paths.get(REPORTS, "purchases-sorted-by-count-report.csv");
+        saveToFile(daysWithSoldCarsSortedByCount, byCountPath, PURCHASES_BY_DATE);
+    }
+
+    public Map<String, List<Purchase>> getPurchasesByCompany(List<Purchase> purchases) {
         return purchases.stream()
                 .collect(Collectors.groupingBy(
                         p -> p.getCar().getCarCompany(),
