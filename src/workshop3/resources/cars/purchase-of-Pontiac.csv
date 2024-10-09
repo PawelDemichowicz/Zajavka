@@ -1,4 +1,5 @@
-id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date29,Sacha,Lamport,slamports@psu.edu,134.108.190.141,#cc8cd1,YV1952AS8D1054810,Pontiac,Solstice,2006,20647.67,Czech Republic,Vidče,2020-05-14
+id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date
+29,Sacha,Lamport,slamports@psu.edu,134.108.190.141,#cc8cd1,YV1952AS8D1054810,Pontiac,Solstice,2006,20647.67,Czech Republic,Vidče,2020-05-14
 45,Ilene,Langran,ilangran18@ft.com,77.127.130.137,#f1013b,5GAER13718J360654,Pontiac,G6,2006,94006.99,Poland,Łękawica,2020-08-23
 65,Phoebe,Hartford,phartford1s@unc.edu,112.201.154.129,#8c0d54,2HNYD2H28CH766206,Pontiac,Sunbird,1986,45933.12,Czech Republic,Mohelnice,2020-12-18
 100,Nicolea,Dench,ndench2r@hatena.ne.jp,220.122.165.85,#555d0f,JN8AZ2KR7DT737349,Pontiac,Grand Prix,1990,31841.04,Poland,Górzno,2020-11-27

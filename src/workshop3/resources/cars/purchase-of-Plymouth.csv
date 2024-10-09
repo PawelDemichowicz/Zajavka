@@ -1,4 +1,5 @@
-id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date31,Concettina,Westover,cwestoveru@goo.gl,220.76.126.225,#4b4a28,2T1KE4EE9BC170615,Plymouth,Colt Vista,1992,53245.72,Czech Republic,Staré Město,2020-08-03
+id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date
+31,Concettina,Westover,cwestoveru@goo.gl,220.76.126.225,#4b4a28,2T1KE4EE9BC170615,Plymouth,Colt Vista,1992,53245.72,Czech Republic,Staré Město,2020-08-03
 44,Gannon,Skoof,gskoof17@boston.com,94.194.136.51,#2f379f,WAUAH74F88N598533,Plymouth,Volare,1976,88917.51,Poland,Borkowice,2020-01-20
 126,Florry,Kohnemann,fkohnemann3h@canalblog.com,195.88.172.159,#839a4c,WAUSH98E77A055083,Plymouth,Colt,1992,57417.48,Czech Republic,Kryry,2020-07-01
 288,Evelyn,Gresly,egresly7z@goodreads.com,145.42.85.9,#cf4b8b,SALME1D45CA074446,Plymouth,Grand Voyager,1994,12759.28,Poland,Żychlin,2020-07-19

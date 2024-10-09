@@ -1,4 +1,5 @@
-id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date95,Horten,Crimmins,hcrimmins2m@last.fm,151.59.157.184,#948555,1FTWW3DY6AE591446,Saab,9-7X,2009,48257.80,Czech Republic,Jevíčko,2020-12-16
+id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date
+95,Horten,Crimmins,hcrimmins2m@last.fm,151.59.157.184,#948555,1FTWW3DY6AE591446,Saab,9-7X,2009,48257.80,Czech Republic,Jevíčko,2020-12-16
 255,Derrek,Boggas,dboggas72@imageshack.us,162.222.114.91,#794309,1FTMF1EW5AK588063,Saab,9000,1997,41963.43,Poland,Tyrawa Wołoska,2020-03-30
 266,Emmy,Van den Velden,evandenvelden7d@yelp.com,24.255.196.23,#fb673f,SCFFDAAEXCG289495,Saab,9-5,2011,84764.56,Poland,Trzcinica,2020-03-22
 268,Nevin,Lafond,nlafond7f@youtu.be,243.13.113.179,#8cb5aa,1N6AA0CC2BN331740,Saab,9000,1986,71315.68,Poland,Kiernozia,2020-05-08

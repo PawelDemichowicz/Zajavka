@@ -1,4 +1,5 @@
-id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date102,Pierce,Croall,pcroall2t@amazon.de,35.112.209.246,#49ba01,SCBGT3ZA8FC034801,Kia,Spectra,2005,59132.18,Poland,Kup,2020-04-27
+id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date
+102,Pierce,Croall,pcroall2t@amazon.de,35.112.209.246,#49ba01,SCBGT3ZA8FC034801,Kia,Spectra,2005,59132.18,Poland,Kup,2020-04-27
 400,Sofia,Hairyes,shairyesb3@vkontakte.ru,173.7.131.87,#84e9a5,JM1DE1KY3E0709671,Kia,Sportage,2001,62965.49,Poland,Brudzew,2020-12-26
 590,Hammad,Adamini,hadaminigd@narod.ru,173.136.41.129,#1db8b0,5N1AN0NU9BC028216,Kia,Spectra,2000,43602.19,Poland,Trablice,2020-02-11
 603,Kristy,Sitford,ksitfordgq@usnews.com,179.200.118.74,#e81465,1GYS3NKJ7FR439777,Kia,Rio,2003,41335.71,Poland,Barlinek,2020-10-12

@@ -1,4 +1,5 @@
-id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date26,Vitia,Wressell,vwressellp@joomla.org,83.75.76.69,#fc52a8,5N1AA0NE0EN847693,BMW,Z4,2010,30372.27,Czech Republic,Břeclav,2020-01-07
+id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date
+26,Vitia,Wressell,vwressellp@joomla.org,83.75.76.69,#fc52a8,5N1AA0NE0EN847693,BMW,Z4,2010,30372.27,Czech Republic,Břeclav,2020-01-07
 53,Ronica,Kirtland,rkirtland1g@smh.com.au,85.255.41.175,#362699,WA1WMAFE7DD223278,BMW,1 Series,2010,59998.39,Poland,Pilchowice,2020-06-26
 55,Carly,Vasnetsov,cvasnetsov1i@freewebs.com,103.247.181.255,#67ddc5,WAUSF98E38A270340,BMW,5 Series,2000,64328.89,Germany,Hamburg Sankt Pauli,2020-03-26
 75,Harland,Cobello,hcobello22@ted.com,240.61.35.39,#acf056,YV440MBK4F1358967,BMW,X5,2000,48845.79,Poland,Rokitno,2020-03-09

@@ -1,4 +1,5 @@
-id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date12,Brannon,Dexter,bdexterb@mozilla.com,242.111.242.135,#1906e0,1G6DS57VX90897709,Cadillac,Escalade ESV,2007,28270.94,Poland,Rozwadza,2020-01-12
+id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date
+12,Brannon,Dexter,bdexterb@mozilla.com,242.111.242.135,#1906e0,1G6DS57VX90897709,Cadillac,Escalade ESV,2007,28270.94,Poland,Rozwadza,2020-01-12
 60,Ryan,Drane,rdrane1n@ucla.edu,113.128.203.179,#6354b6,WBA5M6C5XED138968,Cadillac,CTS,2011,25636.62,Poland,Szydłowo,2020-05-26
 70,Linn,Louche,llouche1x@harvard.edu,241.31.139.134,#b56ebc,1B3CB2HA2AD242557,Cadillac,CTS-V,2009,33447.26,Poland,Miejska Górka,2020-02-22
 90,Anita,Gibbin,agibbin2h@lulu.com,55.240.206.240,#4e4639,3MZBM1L72EM306808,Cadillac,CTS,2004,84373.48,Poland,Łopuszna,2020-06-01

@@ -1,4 +1,5 @@
-id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date35,Noll,Mazzia,nmazziay@github.com,186.76.124.140,#704f70,1G6KD57Y68U623880,Infiniti,Q,1993,22305.50,Czech Republic,Horní Suchá,2020-12-07
+id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date
+35,Noll,Mazzia,nmazziay@github.com,186.76.124.140,#704f70,1G6KD57Y68U623880,Infiniti,Q,1993,22305.50,Czech Republic,Horní Suchá,2020-12-07
 111,Blondell,Lensch,blensch32@google.fr,42.63.200.75,#b47c83,WDDGF4HB4CR544971,Infiniti,FX,2009,10297.11,Czech Republic,Batelov,2020-02-03
 228,Ki,Camerello,kcamerello6b@examiner.com,209.124.238.39,#2ab356,1G4PP5SK7E4298712,Infiniti,G35,2008,70158.45,Germany,Duisburg,2020-06-20
 360,Lotti,Keeton,lkeeton9z@comcast.net,8.56.152.152,#750c76,1FMJU2A58AE068204,Infiniti,G37,2011,91197.03,Czech Republic,Rychnov nad Kněžnou,2020-12-04

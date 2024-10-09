@@ -1,4 +1,5 @@
-id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date16,Wolf,Couroy,wcouroyf@dot.gov,204.180.151.24,#87b060,WBAAZ33415K216099,Toyota,T100 Xtra,1995,83465.10,Poland,Smolec,2020-05-27
+id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date
+16,Wolf,Couroy,wcouroyf@dot.gov,204.180.151.24,#87b060,WBAAZ33415K216099,Toyota,T100 Xtra,1995,83465.10,Poland,Smolec,2020-05-27
 23,Standford,McBayne,smcbaynem@topsy.com,219.138.159.166,#5d3d15,2D4RN7DG9BR523778,Toyota,4Runner,1997,44024.02,Czech Republic,Chyňava,2020-10-20
 64,Roseline,Francescuccio,rfrancescuccio1r@economist.com,252.22.214.206,#fe13d7,SCBCR73W99C041320,Toyota,T100,1996,56891.24,Poland,Ręczno,2020-02-29
 93,Jake,Wedge,jwedge2k@studiopress.com,143.113.58.136,#a49a39,19UUB3F71FA807150,Toyota,Camry,2010,70473.21,Czech Republic,Zvole,2020-09-08

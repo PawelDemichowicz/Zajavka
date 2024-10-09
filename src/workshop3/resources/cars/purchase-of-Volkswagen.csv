@@ -1,4 +1,5 @@
-id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date3,Kettie,Molesworth,kmolesworth2@amazon.co.jp,112.14.244.143,#e253f4,1G6DN56S250035433,Volkswagen,GTI,2005,24576.75,Poland,Koronowo,2020-02-13
+id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date
+3,Kettie,Molesworth,kmolesworth2@amazon.co.jp,112.14.244.143,#e253f4,1G6DN56S250035433,Volkswagen,GTI,2005,24576.75,Poland,Koronowo,2020-02-13
 20,Rosalie,Scarlin,rscarlinj@slate.com,231.170.1.216,#b5096c,WAUKH78E88A568848,Volkswagen,Passat,1994,63972.26,Czech Republic,Ústí nad Orlicí,2020-08-22
 36,Marion,Normand,mnormandz@aboutads.info,204.52.31.30,#9f41db,WBA3B5C56EF695887,Volkswagen,New Beetle,2012,57040.11,Czech Republic,Lukavec,2020-12-24
 109,Clarie,Tue,ctue30@adobe.com,2.97.86.205,#3108d6,JH4KC1F53EC957753,Volkswagen,Touareg,2003,22049.47,Poland,Miłakowo,2020-09-01

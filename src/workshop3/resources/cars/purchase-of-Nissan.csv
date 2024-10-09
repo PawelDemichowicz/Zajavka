@@ -1,4 +1,5 @@
-id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date76,Ben,Yarwood,byarwood23@creativecommons.org,118.169.87.59,#ff6af6,WBA6B4C59DD511334,Nissan,300ZX,1991,12845.04,Poland,Borzęcin,2020-10-02
+id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date
+76,Ben,Yarwood,byarwood23@creativecommons.org,118.169.87.59,#ff6af6,WBA6B4C59DD511334,Nissan,300ZX,1991,12845.04,Poland,Borzęcin,2020-10-02
 82,Carlina,Sharma,csharma29@wsj.com,22.97.208.15,#744ef6,WAUJT68EX2A966932,Nissan,Altima,2003,36066.50,Poland,Łapanów,2020-02-16
 106,Chelsey,Kreuzer,ckreuzer2x@lycos.com,230.41.160.252,#f22c72,WVGEF9BP4FD544582,Nissan,Titan,2012,18572.45,Czech Republic,Čáslav,2020-04-07
 122,Enos,Kimmons,ekimmons3d@netscape.com,97.146.236.243,#80f590,WDDHF5KB9EA860967,Nissan,Sentra,2002,9821.53,Germany,Erfurt,2020-06-17

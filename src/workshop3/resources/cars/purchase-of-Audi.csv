@@ -1,4 +1,5 @@
-id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date4,Bobinette,Silversmid,bsilversmid3@va.gov,235.128.129.91,#430bbb,3C4PDDDG8ET165757,Audi,A6,2002,14233.71,Poland,Parchowo,2020-02-04
+id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date
+4,Bobinette,Silversmid,bsilversmid3@va.gov,235.128.129.91,#430bbb,3C4PDDDG8ET165757,Audi,A6,2002,14233.71,Poland,Parchowo,2020-02-04
 110,Gwenny,Arnowitz,garnowitz31@comsenz.com,94.93.89.128,#71b30f,4USBT53474L369108,Audi,A8,2000,68877.19,Poland,Rokitno,2020-05-25
 129,Bink,Duff,bduff3k@vkontakte.ru,105.202.162.56,#63bd24,19VDE3F33EE165652,Audi,A3,2008,2217.07,Denmark,Frederiksberg,2020-07-25
 152,Bink,Ballintime,bballintime47@hexun.com,109.195.112.171,#24f8ea,3D7TT2CT2BG762448,Audi,A3,2008,59198.28,Czech Republic,Police nad Metují,2020-12-05

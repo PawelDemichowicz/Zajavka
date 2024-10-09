@@ -1,4 +1,5 @@
-id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date38,Dionisio,Cornfoot,dcornfoot11@ihg.com,237.19.217.54,#8c3079,1GKS1EEF0ER954156,Land Rover,Range Rover,1994,67417.84,Czech Republic,Přimda,2020-02-13
+id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date
+38,Dionisio,Cornfoot,dcornfoot11@ihg.com,237.19.217.54,#8c3079,1GKS1EEF0ER954156,Land Rover,Range Rover,1994,67417.84,Czech Republic,Přimda,2020-02-13
 116,Christiano,O'Hengerty,cohengerty37@narod.ru,210.142.188.139,#c5720f,1G4GC5ER4CF871894,Land Rover,Range Rover,1991,38105.55,Czech Republic,Černošín,2020-12-09
 206,Maynord,Dunnett,mdunnett5p@engadget.com,88.233.225.141,#d52d17,3VWF17AT0FM576490,Land Rover,Discovery,2000,44288.79,Poland,Piasek,2020-02-03
 398,Jerad,St Ledger,jstledgerb1@opera.com,107.225.87.235,#2df7ae,WBAPL33579A476961,Land Rover,Discovery,2006,77609.86,Czech Republic,Zabrušany,2020-07-28

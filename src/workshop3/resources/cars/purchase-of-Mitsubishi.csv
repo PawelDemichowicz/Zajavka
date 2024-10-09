@@ -1,4 +1,5 @@
-id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date32,Cello,Carroll,ccarrollv@spotify.com,213.92.152.33,#e24e3a,JN8AZ1MU6CW935297,Mitsubishi,Truck,1987,67651.11,Poland,Oborniki Śląskie,2020-05-18
+id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date
+32,Cello,Carroll,ccarrollv@spotify.com,213.92.152.33,#e24e3a,JN8AZ1MU6CW935297,Mitsubishi,Truck,1987,67651.11,Poland,Oborniki Śląskie,2020-05-18
 66,Clementius,Naerup,cnaerup1t@tuttocitta.it,233.103.63.102,#75bf79,1GYS4JEF2DR071261,Mitsubishi,3000GT,1995,69929.29,Czech Republic,Krásná Lípa,2020-01-28
 80,Chariot,Kops,ckops27@mapquest.com,126.25.65.87,#93601f,WBAFR1C55BC272071,Mitsubishi,Montero,2001,19694.43,Poland,Ścinawa,2020-06-06
 124,Maxine,Sleath,msleath3f@gmpg.org,191.46.219.106,#3424eb,WA1LGAFE5ED933548,Mitsubishi,Raider,2006,67799.88,Poland,Skoczów,2020-07-22

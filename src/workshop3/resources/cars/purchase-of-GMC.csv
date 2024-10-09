@@ -1,4 +1,5 @@
-id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date41,Queenie,Vial,qvial14@multiply.com,201.11.195.220,#e8facb,WAUCFAFH8BN695474,GMC,Suburban 1500,1993,31746.21,Slovakia,Bratislava,2020-09-06
+id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date
+41,Queenie,Vial,qvial14@multiply.com,201.11.195.220,#e8facb,WAUCFAFH8BN695474,GMC,Suburban 1500,1993,31746.21,Slovakia,Bratislava,2020-09-06
 84,Erich,Cuniam,ecuniam2b@home.pl,40.1.115.216,#b82390,JN8AZ2NC7D9278912,GMC,Jimmy,1995,64474.61,Germany,Mainz,2020-07-27
 101,Cassi,Lathey,clathey2s@amazonaws.com,107.61.186.115,#f6a43a,3VW4A7AT5DM856202,GMC,Yukon,2005,64903.07,Czech Republic,Chroustovice,2020-06-06
 107,Luis,Charrisson,lcharrisson2y@over-blog.com,173.83.117.187,#0478e5,WVGEF9BP1ED017355,GMC,2500,1994,38509.40,Czech Republic,Osek nad Bečvou,2020-10-05

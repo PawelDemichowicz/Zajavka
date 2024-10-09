@@ -52,4 +52,8 @@ public class PurchaseMappingService {
                 purchase.getLocation().getCity(),
                 purchase.getDate());
     }
+
+    public String mapPurchaseToReport(int id, String company, String model, BigDecimal averagePrice, long count) {
+        return String.format("%s,%s,%s,%s,%s", id, company, model, averagePrice, count);
+    }
 }

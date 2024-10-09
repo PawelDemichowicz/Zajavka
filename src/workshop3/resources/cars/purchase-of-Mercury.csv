@@ -1,4 +1,5 @@
-id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date98,Elmo,Bezant,ebezant2p@newsvine.com,235.99.242.125,#952399,1FTMF1CW3AF329339,Mercury,Cougar,1970,88700.15,Czech Republic,Mirošov,2020-01-04
+id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date
+98,Elmo,Bezant,ebezant2p@newsvine.com,235.99.242.125,#952399,1FTMF1CW3AF329339,Mercury,Cougar,1970,88700.15,Czech Republic,Mirošov,2020-01-04
 114,Lorenza,Eley,leley35@free.fr,91.212.4.150,#64b9b1,1G4PP5SK1F4723682,Mercury,Tracer,1991,27729.92,Poland,Dębno,2020-10-15
 176,Gay,Meeking,gmeeking4v@wired.com,79.239.0.249,#ee0712,WAUDF58EX5A224615,Mercury,Cougar,2001,84681.86,Poland,Działoszyce,2020-04-25
 188,Hettie,Swyn,hswyn57@engadget.com,189.107.173.220,#43f10e,WA1YD54B14N438089,Mercury,Mystique,1999,94727.98,Czech Republic,Bohumín,2020-05-03

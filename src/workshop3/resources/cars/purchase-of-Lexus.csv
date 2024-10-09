@@ -1,4 +1,5 @@
-id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date2,Rozalie,Koles,rkoles1@va.gov,163.62.162.110,#9a89e7,5UXKS4C52F0757166,Lexus,IS F,2009,72669.07,Poland,Kotuń,2020-07-22
+id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date
+2,Rozalie,Koles,rkoles1@va.gov,163.62.162.110,#9a89e7,5UXKS4C52F0757166,Lexus,IS F,2009,72669.07,Poland,Kotuń,2020-07-22
 196,Farrel,Housley,fhousley5f@fc2.com,164.185.140.49,#00a1c9,WP0CA2A8XBU992217,Lexus,LS,1991,90019.91,Czech Republic,Jedlová,2020-03-26
 207,Brett,Poulsen,bpoulsen5q@wikipedia.org,241.134.75.24,#710a9f,WAUKG74F66N843818,Lexus,ES,1996,75323.10,Germany,Neuss,2020-02-08
 286,Viki,Lummis,vlummis7x@webmd.com,10.88.110.132,#f09885,2C3CDXCT3DH859198,Lexus,LX,2013,61266.53,Poland,Libiąż,2020-09-19

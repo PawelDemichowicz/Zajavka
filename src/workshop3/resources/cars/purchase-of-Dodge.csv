@@ -1,4 +1,5 @@
-id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date9,Antonella,Riepl,ariepl8@mediafire.com,169.75.223.75,#7c776f,2D4RN5D13AR749927,Dodge,Neon,2004,18117.79,Poland,Dobrzyca,2020-03-11
+id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date
+9,Antonella,Riepl,ariepl8@mediafire.com,169.75.223.75,#7c776f,2D4RN5D13AR749927,Dodge,Neon,2004,18117.79,Poland,Dobrzyca,2020-03-11
 13,Nester,Caurah,ncaurahc@google.fr,70.71.96.24,#4e0fab,2C3CDXHG5EH264592,Dodge,Charger,2009,75360.35,Germany,Berlin,2020-04-03
 17,Gerty,Mouse,gmouseg@alexa.com,23.47.231.189,#7aef95,3GYT4MEF1DG663367,Dodge,Ram Van 1500,1999,6048.17,Czech Republic,Zákupy,2020-06-13
 39,Delores,Wye,dwye12@fotki.com,166.186.146.27,#3bcc7f,1YVHZ8BH3B5464829,Dodge,D150 Club,1992,45687.25,Poland,Skorogoszcz,2020-03-17

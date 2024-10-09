@@ -1,4 +1,5 @@
-id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date25,Wallace,Oury,wouryo@woothemes.com,90.88.188.67,#66184f,4T1BD1EB7FU026332,Acura,RDX,2008,64467.57,Denmark,Frederiksberg,2020-11-30
+id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date
+25,Wallace,Oury,wouryo@woothemes.com,90.88.188.67,#66184f,4T1BD1EB7FU026332,Acura,RDX,2008,64467.57,Denmark,Frederiksberg,2020-11-30
 54,Grant,Syrett,gsyrett1h@prlog.org,119.89.29.184,#8c163c,WBADX1C5XCE850586,Acura,RL,2009,87273.74,Poland,Czerniewice,2020-12-16
 247,Caresse,Bussens,cbussens6u@dion.ne.jp,219.63.220.114,#095ecf,YV1940AS0B1810215,Acura,TL,2009,36695.79,Czech Republic,Všenory,2020-02-26
 424,Sunny,Wherry,swherrybr@apache.org,65.86.131.188,#f4309a,1N6AF0LX4FN314352,Acura,NSX,1997,82460.18,Poland,Stoczek Łukowski,2020-08-11

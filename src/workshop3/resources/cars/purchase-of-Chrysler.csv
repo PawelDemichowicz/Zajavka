@@ -1,4 +1,5 @@
-id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date18,Kissee,Paull,kpaullh@blogs.com,226.237.22.103,#9da9d2,WA1LFAFP9CA893316,Chrysler,300M,2003,63058.40,Poland,Niedzica,2020-10-26
+id,first_name,last_name,email,ip_address,color,car_vin,car_company,car_model,car_model_year,car_price,country,city,date
+18,Kissee,Paull,kpaullh@blogs.com,226.237.22.103,#9da9d2,WA1LFAFP9CA893316,Chrysler,300M,2003,63058.40,Poland,Niedzica,2020-10-26
 83,Alethea,Greensted,agreensted2a@blogspot.com,207.120.225.241,#42b5c5,WA1CYBFE6AD346143,Chrysler,Concorde,2001,37644.77,Poland,Łysomice,2020-08-31
 96,Ali,Chang,achang2n@archive.org,30.226.219.224,#b8342f,3N1CE2CPXFL569911,Chrysler,PT Cruiser,2007,15721.87,Poland,Zielonka,2020-01-03
 132,Elna,Matyukon,ematyukon3n@tmall.com,70.245.48.64,#1922c4,1GKS1AEC8FR177192,Chrysler,New Yorker,1996,639.91,Czech Republic,Bořitov,2020-06-17
