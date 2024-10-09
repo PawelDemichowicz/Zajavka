@@ -15,7 +15,7 @@ public class PrinterService {
 
         try (Stream<Path> carPaths = Files.list(carsPath)) {
             TreeMap<String, Long> carCompanyPurchases = carPaths.collect(Collectors.toMap(
-                    p -> p.getFileName().toString().replace(".csv", ""),
+                    path -> path.getFileName().toString().replace(".csv", ""),
                     PrinterService::countPurchasesByCompany,
                     Long::sum,
                     TreeMap::new
@@ -23,15 +23,16 @@ public class PrinterService {
 
             carCompanyPurchases.entrySet().stream()
                     .sorted(Map.Entry.<String, Long>comparingByValue().reversed())
-                    .forEach(entry -> System.out.printf("%s: %s%n", entry.getKey().replace("purchase-of-" ,""), entry.getValue()));
-
+                    .forEach(entry -> System.out.printf("%s: %s%n",
+                            entry.getKey().replace("purchase-of-", ""),
+                            entry.getValue()));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private static long countPurchasesByCompany(Path p) {
-        try (Stream<String> rows = Files.lines(p)) {
+    private static long countPurchasesByCompany(Path path) {
+        try (Stream<String> rows = Files.lines(path)) {
             return rows.count();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -43,7 +44,7 @@ public class PrinterService {
 
         try (Stream<Path> carPaths = Files.list(carsPath)) {
             TreeMap<String, Long> carCompanyPurchases = carPaths.collect(Collectors.toMap(
-                    p -> p.getFileName().toString().replace(".csv", ""),
+                    path -> path.getFileName().toString().replace(".csv", ""),
                     PrinterService::countPathSize,
                     Long::sum,
                     TreeMap::new
@@ -51,16 +52,17 @@ public class PrinterService {
 
             carCompanyPurchases.entrySet().stream()
                     .sorted(Map.Entry.<String, Long>comparingByKey().reversed())
-                    .forEach(entry -> System.out.printf("%s: %s%n", entry.getKey().replace("purchase-of-" ,""), entry.getValue()));
-
+                    .forEach(entry -> System.out.printf("%s: %s%n",
+                            entry.getKey().replace("purchase-of-", ""),
+                            entry.getValue()));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private static long countPathSize(Path p) {
+    private static long countPathSize(Path path) {
         try {
-            return Files.size(p);
+            return Files.size(path);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

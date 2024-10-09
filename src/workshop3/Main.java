@@ -13,14 +13,15 @@ public class Main {
         FileService fileService = new FileService();
         PrinterService printerService = new PrinterService();
         Path path = Paths.get("src/workshop3/resources/client-car-purchase-spreadsheet.csv");
-
         List<Purchase> purchaseList = fileService.loadData(path);
+
         fileService.writeDataPerCarCompany(purchaseList);
         printerService.printCountedPurchasePerCompany();
+
         System.out.println();
+
         printerService.printCarCompanyPerFileSize();
         fileService.generateReportWithSoldCarStats(fileService.getPurchasesByCompany(purchaseList));
         fileService.generateReportWithSoldCarsPerDate(purchaseList);
-
     }
 }

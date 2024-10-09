@@ -22,8 +22,8 @@ import java.util.stream.Stream;
 public class FileService {
     public static final String RESOURCES_CARS = "src/workshop3/resources/cars/";
     public static final String REPORTS = "src/workshop3/resources/reports/";
-    public static final String RESOURCES_CARS_HEADER = "id,first_name,last_name,email,ip_address,color,car_vin,car_company," +
-            "car_model,car_model_year,car_price,country,city,date";
+    public static final String RESOURCES_CARS_HEADER = "id,first_name,last_name,email,ip_address,color,car_vin" +
+            "car_company,car_model,car_model_year,car_price,country,city,date";
     public static final String PURCHASES_BY_COMPANY_AND_CAR = "id,company,model,average_price,amount_of_purchases";
     public static final String PURCHASES_BY_DATE = "id,date,amount_of_purchases";
 
@@ -47,19 +47,21 @@ public class FileService {
             List<String> rows = entry.getValue().stream()
                     .map(purchaseMappingService::mapPurchaseToCSV)
                     .collect(Collectors.toList());
+
             saveToFile(rows, carCompanyPath, RESOURCES_CARS_HEADER);
         }
     }
 
     public void generateReportWithSoldCarStats(Map<String, List<Purchase>> purchasesByCompany) {
-        Map<String, Map<String, List<Purchase>>> purchasesGroupByCompanyAndModel = purchasesByCompany.entrySet().stream()
-                .collect(Collectors.toMap(
-                        Map.Entry::getKey,
-                        entry -> entry.getValue().stream()
-                                .collect(Collectors.groupingBy(
-                                                innerEntry -> innerEntry.getCar().getCarModel()
-                                        )
-                                )));
+        Map<String, Map<String, List<Purchase>>> purchasesGroupByCompanyAndModel =
+                purchasesByCompany.entrySet().stream()
+                        .collect(Collectors.toMap(
+                                Map.Entry::getKey,
+                                entry -> entry.getValue().stream()
+                                        .collect(Collectors.groupingBy(
+                                                        innerEntry -> innerEntry.getCar().getCarModel()
+                                                )
+                                        )));
 
         Map<String, Map<String, Pair<BigDecimal, Long>>> purchasesGroupByCompanyAndModelWithAveragePriceAndCount =
                 purchasesGroupByCompanyAndModel.entrySet().stream()
@@ -72,7 +74,7 @@ public class FileService {
                                                 (first, second) -> first,
                                                 TreeMap::new
                                         )),
-                                (first, second) -> first,
+                                (firstItem, secondItem) -> firstItem,
                                 TreeMap::new
                         ));
 
@@ -158,6 +160,7 @@ public class FileService {
                 .map(p -> p.getCar().getCarPrice())
                 .reduce(BigDecimal.ZERO, BigDecimal::add)
                 .divide(BigDecimal.valueOf(numberOfPurchases), 2, RoundingMode.HALF_UP);
+
         return new Pair<>(averagePrice, numberOfPurchases);
     }
 }
