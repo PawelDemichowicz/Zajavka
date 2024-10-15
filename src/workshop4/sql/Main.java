@@ -24,10 +24,12 @@ public class Main {
         );
         CommandService commandService = new CommandService();
 
-        List<Command> command = list.stream()
+        List<Command> commands = list.stream()
                 .map(commandService::buildCommand)
                 .filter(Optional::isPresent)
                 .map(Optional::get)
                 .collect(Collectors.toList());
+
+        commands.forEach(System.out::println);
     }
 }

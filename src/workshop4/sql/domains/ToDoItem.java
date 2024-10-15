@@ -1,9 +1,10 @@
 package workshop4.sql.domains;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class ToDoItem {
+    public static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
     private String name;
     private String description;
     private LocalDateTime deadLine;
@@ -39,5 +40,22 @@ public class ToDoItem {
 
     public void setPriority(Integer priority) {
         this.priority = priority;
+    }
+
+    @Override
+    public String toString() {
+        return "ToDoItem{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", deadLine=" + deadLine +
+                ", priority=" + priority +
+                '}';
+    }
+
+    public enum Field {
+        NAME,
+        DESCRIPTION,
+        DEADLINE,
+        PRIORITY
     }
 }

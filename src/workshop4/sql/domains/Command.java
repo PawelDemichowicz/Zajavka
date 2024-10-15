@@ -1,6 +1,5 @@
 package workshop4.sql.domains;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -13,6 +12,22 @@ public class Command {
     public Command(Type type, ToDoItem toDoItem) {
         this.type = type;
         this.toDoItem = toDoItem;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public ToDoItem getToDoItem() {
+        return toDoItem;
+    }
+
+    @Override
+    public String toString() {
+        return "Command{" +
+                "type=" + type +
+                ", toDoItem=" + toDoItem +
+                '}';
     }
 
     public enum Type {
@@ -38,5 +53,15 @@ public class Command {
         public String getName() {
             return name;
         }
+
+        public static Type from(String input) {
+            for (Type type : Type.values()) {
+                if (type.name.equals(input)) {
+                    return type;
+                }
+            }
+            throw new IllegalArgumentException(input);
+        }
+
     }
 }
