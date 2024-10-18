@@ -2,6 +2,7 @@ package workshop4.sql;
 
 import workshop4.sql.domains.Command;
 import workshop4.sql.services.CommandService;
+import workshop4.sql.services.DatabaseRunner;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,6 +12,7 @@ public class Main {
 
     public static void main(String[] args) {
         List<String> list = List.of(
+                "DELETE ALL;",
                 "CREATE;NAME=TASK1;DESCRIPTION=SOME DESCRIPTION1;DEADLINE=11.02.2021 20:10;PRIORITY=0",
                 "CREATE;NAME=TASK2;DESCRIPTION=SOME DESCRIPTION2;DEADLINE=12.02.2021 20:10;PRIORITY=1",
                 "CREATE;NAME=TASK3;DESCRIPTION=SOME DESCRIPTION3;DEADLINE=13.02.2021 20:10;PRIORITY=2",
@@ -23,6 +25,7 @@ public class Main {
                 "DELETE ALL;"
         );
         CommandService commandService = new CommandService();
+        DatabaseRunner databaseRunner = new DatabaseRunner();
 
         List<Command> commands = list.stream()
                 .map(commandService::buildCommand)
@@ -30,6 +33,6 @@ public class Main {
                 .map(Optional::get)
                 .collect(Collectors.toList());
 
-        commands.forEach(System.out::println);
+        commands.forEach(databaseRunner::run);
     }
 }
