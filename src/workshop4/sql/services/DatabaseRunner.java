@@ -35,6 +35,8 @@ public class DatabaseRunner {
                 Command.Type.CREATE, this::runAdd,
                 Command.Type.UPDATE, this::runEdit,
                 Command.Type.READ, this::runRead,
+                Command.Type.READ_ALL, this::runReadAll,
+                Command.Type.DELETE, this::runDelete,
                 Command.Type.DELETE_ALL, this::runDeleteAll
         );
     }
@@ -46,7 +48,7 @@ public class DatabaseRunner {
                         String.format("Command: [%s] not supported", command.getType())
                 ));
         commandConsumer.accept(command);
-        System.out.println("######### FINISHED COMMAND ##########");
+        System.out.println("######### FINISHED COMMAND ##########\n");
     }
 
     private void runAdd(final Command command) {
@@ -80,6 +82,25 @@ public class DatabaseRunner {
                 PreparedStatement statement = connection.prepareStatement(SQL_READ_WHERE);
         ) {
             statement.setString(1, command.getToDoItem().getName());
+            try (ResultSet resultSet = statement.executeQuery()) {
+                List<ToDoItem> readItems = mapToToDoItem(resultSet);
+                print(readItems);
+                System.out.printf("Run [%s] successfully, inserted: [%s] rows%n", command.getType(), readItems.size());
+            }
+        } catch (SQLException e) {
+            System.err.printf("INSERT data error. Message: [%s]%n", e.getMessage());
+        }
+    }
+
+    private void runReadAll(final Command command) {
+        if (!Command.Type.READ_ALL.equals(command.getType())) {
+            throw new IllegalArgumentException(command.getType().getName());
+        }
+
+        try (
+                Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+                PreparedStatement statement = connection.prepareStatement(SQL_READ_ALL);
+        ) {
             try (ResultSet resultSet = statement.executeQuery()) {
                 List<ToDoItem> readItems = mapToToDoItem(resultSet);
                 print(readItems);
@@ -134,6 +155,24 @@ public class DatabaseRunner {
             statement.setString(4, command.getToDoItem().getName());
             int count = statement.executeUpdate();
             System.out.printf("Run [%s] successfully, modified: [%s] rows%n", command.getType(), count);
+
+        } catch (SQLException e) {
+            System.err.printf("[%s] data error. Message: [%s]%n", command.getType(), e.getMessage());
+        }
+    }
+
+    private void runDelete(final Command command) {
+        if (!Command.Type.DELETE.equals(command.getType())) {
+            throw new IllegalArgumentException(command.getType().getName());
+        }
+
+        try (
+                Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+                PreparedStatement statement = connection.prepareStatement(SQL_DELETE);
+        ) {
+            statement.setString(1, command.getToDoItem().getName());
+            int count = statement.executeUpdate();
+            System.out.printf("Run [%s] successfully, deleted: [%s] rows%n", command.getType(), count);
 
         } catch (SQLException e) {
             System.err.printf("[%s] data error. Message: [%s]%n", command.getType(), e.getMessage());
