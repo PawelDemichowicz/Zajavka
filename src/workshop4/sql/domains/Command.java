@@ -9,9 +9,14 @@ public class Command {
     private final Type type;
     private final ToDoItem toDoItem;
 
-    public Command(Type type, ToDoItem toDoItem) {
+    private final ToDoItem.Field sortBy;
+    private final SortDirection sortDir;
+
+    public Command(Type type, ToDoItem toDoItem, ToDoItem.Field sortBy, SortDirection sortDir) {
         this.type = type;
         this.toDoItem = toDoItem;
+        this.sortBy = sortBy;
+        this.sortDir = sortDir;
     }
 
     public Type getType() {
@@ -20,6 +25,14 @@ public class Command {
 
     public ToDoItem getToDoItem() {
         return toDoItem;
+    }
+
+    public ToDoItem.Field getSortBy() {
+        return sortBy;
+    }
+
+    public SortDirection getSortDir() {
+        return sortDir;
     }
 
     @Override
@@ -62,6 +75,10 @@ public class Command {
             }
             throw new IllegalArgumentException(input);
         }
+    }
 
+    public enum SortDirection {
+        ASC,
+        DESC
     }
 }

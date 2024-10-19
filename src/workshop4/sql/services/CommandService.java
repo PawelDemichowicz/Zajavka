@@ -4,9 +4,7 @@ import workshop4.sql.domains.Command;
 import workshop4.sql.domains.ToDoItem;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class CommandService {
@@ -26,8 +24,43 @@ public class CommandService {
                         itemSplit -> itemSplit[1]
                 ));
 
+        List<String> sortingParams = Optional.ofNullable(parametersMap.get(ToDoItem.Field.SORT.name()))
+                .map(params -> List.of(params.split(",")))
+                .orElse(Collections.emptyList());
+
         ToDoItem toDoItem = buildToDoItem(parametersMap);
-        return Optional.of(new Command(Command.Type.from(commandType), toDoItem));
+        return Optional.of(new Command(
+                Command.Type.from(commandType),
+                toDoItem,
+                findSortingField(sortingParams),
+                findSortingDir(sortingParams))
+        );
+    }
+
+    private ToDoItem.Field findSortingField(List<String> sortingParams) {
+        if (sortingParams.isEmpty()) {
+            return ToDoItem.Field.NAME;
+        }
+
+        try {
+            return ToDoItem.Field.valueOf(sortingParams.get(0));
+        } catch (Exception e) {
+            System.err.printf("Sorting field is not specified. Default: [%s]%n", ToDoItem.Field.NAME);
+            return ToDoItem.Field.NAME;
+        }
+    }
+
+    private Command.SortDirection findSortingDir(List<String> sortingParams) {
+        if (sortingParams.isEmpty()) {
+            return Command.SortDirection.ASC;
+        }
+
+        try {
+            return Command.SortDirection.valueOf(sortingParams.get(1));
+        } catch (Exception e) {
+            System.err.printf("Sorting direction is not specified. Default: [%s]%n", Command.SortDirection.ASC);
+            return Command.SortDirection.ASC;
+        }
     }
 
     private ToDoItem buildToDoItem(Map<String, String> parametersMap) {

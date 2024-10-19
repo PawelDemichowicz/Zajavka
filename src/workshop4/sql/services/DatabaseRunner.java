@@ -23,7 +23,7 @@ public class DatabaseRunner {
     private static final String SQL_READ_WHERE
             = "SELECT * FROM TODOLIST WHERE NAME = ?;";
     private static final String SQL_READ_ALL
-            = "SELECT * FROM TODOLIST;";
+            = "SELECT * FROM TODOLIST ORDER BY ?1 ?2;";
     private static final String SQL_DELETE
             = "DELETE FROM TODOLIST WHERE NAME = ?;";
     private static final String SQL_DELETE_ALL
@@ -99,7 +99,9 @@ public class DatabaseRunner {
 
         try (
                 Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-                PreparedStatement statement = connection.prepareStatement(SQL_READ_ALL);
+                PreparedStatement statement = connection.prepareStatement(SQL_READ_ALL
+                        .replace("?1", command.getSortBy().name())
+                        .replace("?2", command.getSortDir().name()));
         ) {
             try (ResultSet resultSet = statement.executeQuery()) {
                 List<ToDoItem> readItems = mapToToDoItem(resultSet);

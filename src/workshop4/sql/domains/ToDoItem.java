@@ -56,6 +56,7 @@ public class ToDoItem {
         NAME,
         DESCRIPTION,
         DEADLINE,
-        PRIORITY
+        PRIORITY,
+        SORT
     }
 }
