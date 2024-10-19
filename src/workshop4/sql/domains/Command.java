@@ -48,6 +48,7 @@ public class Command {
         UPDATE("UPDATE"),
         READ("READ"),
         READ_ALL("READ ALL"),
+        READ_GROUPED("READ GROUPED"),
         DELETE("DELETE"),
         DELETE_ALL("DELETE ALL");
 

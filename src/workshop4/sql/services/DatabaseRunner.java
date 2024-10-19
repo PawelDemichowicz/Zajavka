@@ -4,10 +4,7 @@ import workshop4.sql.domains.Command;
 import workshop4.sql.domains.ToDoItem;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Consumer;
 
 public class DatabaseRunner {
@@ -24,6 +21,8 @@ public class DatabaseRunner {
             = "SELECT * FROM TODOLIST WHERE NAME = ?;";
     private static final String SQL_READ_ALL
             = "SELECT * FROM TODOLIST ORDER BY ?1 ?2;";
+    private static final String SQL_READ_GROUPED
+            = "SELECT DATE(deadline) AS DATE, ARRAY_AGG(name) AS TASKS FROM TODOLIST GROUP BY DATE(deadline);";
     private static final String SQL_DELETE
             = "DELETE FROM TODOLIST WHERE NAME = ?;";
     private static final String SQL_DELETE_ALL
@@ -36,6 +35,7 @@ public class DatabaseRunner {
                 Command.Type.UPDATE, this::runEdit,
                 Command.Type.READ, this::runRead,
                 Command.Type.READ_ALL, this::runReadAll,
+                Command.Type.READ_GROUPED, this::runReadGrouped,
                 Command.Type.DELETE, this::runDelete,
                 Command.Type.DELETE_ALL, this::runDeleteAll
         );
@@ -113,6 +113,33 @@ public class DatabaseRunner {
         }
     }
 
+    private void runReadGrouped(final Command command) {
+        if (!Command.Type.READ_GROUPED.equals(command.getType())) {
+            throw new IllegalArgumentException(command.getType().getName());
+        }
+
+        try (
+                Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+                PreparedStatement statement = connection.prepareStatement(SQL_READ_GROUPED)
+        ) {
+            try (ResultSet resultSet = statement.executeQuery()) {
+                Map<String, String> readGrouped = mapToGrouped(resultSet);
+                print(readGrouped);
+                System.out.printf("Run [%s] successfully, inserted: [%s] rows%n", command.getType(), readGrouped.size());
+            }
+        } catch (SQLException e) {
+            System.err.printf("INSERT data error. Message: [%s]%n", e.getMessage());
+        }
+    }
+
+    private Map<String, String> mapToGrouped(ResultSet resultSet) throws SQLException {
+        Map<String, String> result = new LinkedHashMap<>();
+        while (resultSet.next()) {
+            result.put(resultSet.getString("DATE"), resultSet.getString("TASKS"));
+        }
+        return result;
+    }
+
     private List<ToDoItem> mapToToDoItem(ResultSet resultSet) throws SQLException {
         List<ToDoItem> result = new ArrayList<>();
         while (resultSet.next()) {
@@ -140,6 +167,15 @@ public class DatabaseRunner {
                 entry.getDeadLine(),
                 entry.getPriority()));
 
+    }
+
+    private void print(Map<String, String> readItems) {
+        System.out.println("READ GROUPED");
+        String schema = "%-25s%-25s%n";
+        System.out.printf(schema, "NAME", "TASKS");
+        for (var entry : readItems.entrySet()) {
+            System.out.printf(schema, entry.getKey(), entry.getValue());
+        }
     }
 
     private void runEdit(final Command command) {
