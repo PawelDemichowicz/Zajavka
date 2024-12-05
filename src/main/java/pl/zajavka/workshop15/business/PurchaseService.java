@@ -23,6 +23,10 @@ public class PurchaseService {
         purchaseRepository.removeAll();
     }
 
+    public List<Purchase> findAll() {
+        return purchaseRepository.findAll();
+    }
+
     public List<Purchase> findAll(String email) {
         return purchaseRepository.findAll(email);
     }

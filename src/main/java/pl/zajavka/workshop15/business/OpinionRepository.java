@@ -11,5 +11,7 @@ public interface OpinionRepository {
 
     void removeAll(String email);
 
+    List<Opinion> findAll();
+
     List<Opinion> findAll(String email);
 }

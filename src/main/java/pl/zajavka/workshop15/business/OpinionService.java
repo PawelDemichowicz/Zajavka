@@ -34,12 +34,16 @@ public class OpinionService {
         return opinionRepository.create(opinion);
     }
 
-    @Transactional
-    public void removeAll() {
-        opinionRepository.removeAll();
+    public List<Opinion> findAll() {
+        return opinionRepository.findAll();
     }
 
     public List<Opinion> findAll(String email) {
         return opinionRepository.findAll(email);
+    }
+
+    @Transactional
+    public void removeAll() {
+        opinionRepository.removeAll();
     }
 }

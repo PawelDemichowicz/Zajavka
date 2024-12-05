@@ -1,4 +1,4 @@
-package pl.zajavka.configuration;
+package pl.zajavka.integration;
 
 import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.BeforeEach;
@@ -109,7 +109,7 @@ public class CustomerServiceTest {
                                 .withCustomer(Customer.builder().id(customer.getId()).build())
                                 .withProduct(Product.builder().id(product1.getId()).build())
                                 .withDateTime(opinion.getDateTime().withOffsetSameInstant(ZoneOffset.UTC))
-                        ),
+                ),
                 opinionService.findAll(customer.getEmail())
         );
     }

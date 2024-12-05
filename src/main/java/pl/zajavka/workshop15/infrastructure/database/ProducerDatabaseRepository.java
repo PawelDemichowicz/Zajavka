@@ -11,6 +11,8 @@ import pl.zajavka.workshop15.business.ProducerRepository;
 import pl.zajavka.workshop15.domain.Producer;
 import pl.zajavka.workshop15.infrastructure.configuration.DatabaseConfiguration;
 
+import java.util.List;
+
 import static pl.zajavka.workshop15.infrastructure.configuration.DatabaseConfiguration.PRODUCER_TABLE;
 
 @Slf4j
@@ -19,8 +21,10 @@ import static pl.zajavka.workshop15.infrastructure.configuration.DatabaseConfigu
 public class ProducerDatabaseRepository implements ProducerRepository {
 
     private static final String DELETE_ALL = "DELETE FROM PRODUCER WHERE 1=1";
+    private static final String SELECT_ALL = "SELECT * FROM PRODUCER";
 
     private final SimpleDriverDataSource simpleDriverDataSource;
+    private DatabaseMapper databaseMapper;
 
     @Override
     public Producer create(Producer producer) {
@@ -31,6 +35,13 @@ public class ProducerDatabaseRepository implements ProducerRepository {
         Number producerId = jdbcInsert.executeAndReturnKey(new BeanPropertySqlParameterSource(producer));
         return producer.withId((long) producerId.intValue());
     }
+
+    @Override
+    public List<Producer> findAll() {
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(simpleDriverDataSource);
+        return jdbcTemplate.query(SELECT_ALL, databaseMapper::mapProducer);
+    }
+
 
     @Override
     public void removeAll() {
