@@ -42,7 +42,7 @@ public class ProductServiceTest {
     void thatProductIsWiped() {
         // given
         final var productCode = "68084-618";
-        Product productBefore = productService.find(productCode);
+        productService.find(productCode);
         List<Opinion> opinionsBefore = opinionService.findAllByProductCode(productCode);
         List<Purchase> purchasesBefore = purchaseService.findAllByProductCode(productCode);
 
