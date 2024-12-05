@@ -2,6 +2,7 @@ package pl.zajavka.workshop15.infrastructure.database;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
@@ -17,6 +18,8 @@ import static pl.zajavka.workshop15.infrastructure.configuration.DatabaseConfigu
 @AllArgsConstructor
 public class ProducerDatabaseRepository implements ProducerRepository {
 
+    private static final String DELETE_ALL = "DELETE FROM PRODUCER WHERE 1=1";
+
     private final SimpleDriverDataSource simpleDriverDataSource;
 
     @Override
@@ -27,5 +30,10 @@ public class ProducerDatabaseRepository implements ProducerRepository {
 
         Number producerId = jdbcInsert.executeAndReturnKey(new BeanPropertySqlParameterSource(producer));
         return producer.withId((long) producerId.intValue());
+    }
+
+    @Override
+    public void removeAll() {
+        new JdbcTemplate(simpleDriverDataSource).execute(DELETE_ALL);
     }
 }
