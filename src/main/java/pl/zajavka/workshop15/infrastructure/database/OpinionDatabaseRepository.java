@@ -30,8 +30,12 @@ public class OpinionDatabaseRepository implements OpinionRepository {
                 WHERE CUS.EMAIL = :email
                 ORDER BY DATE_TIME
             """;
-    private static final String DELETE_ALL_WHERE_CUSTOMER_EMAIL =
-            "DELETE FROM OPINION WHERE CUSTOMER_ID IN (SELECT ID FROM CUSTOMER WHERE EMAIL = :email)";
+    private static final String SELECT_ALL_WHERE_PRODUCT_CODE = """
+            SELECT * FROM OPINION AS OPN
+                INNER JOIN PRODUCT AS PROD ON PROD.ID = OPN.PRODUCT_ID
+                WHERE PROD.PRODUCT_CODE = :productCode
+                ORDER BY DATE_TIME
+            """;
 
     private static final String SELECT_UNWANTED_OPINIONS = "SELECT * FROM OPINION WHERE STARS < 4";
     private static final String SELECT_UNWANTED_OPINIONS_FOR_EMAIL = """
@@ -41,9 +45,13 @@ public class OpinionDatabaseRepository implements OpinionRepository {
             """;
     private static final String DELETE_UNWANTED_OPINIONS = "DELETE FROM OPINION WHERE STARS < 4";
 
+    private static final String DELETE_ALL_WHERE_CUSTOMER_EMAIL =
+            "DELETE FROM OPINION WHERE CUSTOMER_ID IN (SELECT ID FROM CUSTOMER WHERE EMAIL = :email)";
+    private static final String DELETE_ALL_WHERE_PRODUCT_CODE =
+            "DELETE FROM OPINION WHERE PRODUCT_ID IN (SELECT ID FROM PRODUCT WHERE PRODUCT_CODE = :productCode)";
+
 
     private final SimpleDriverDataSource simpleDriverDataSource;
-
     private final DatabaseMapper databaseMapper;
 
     @Override
@@ -77,6 +85,12 @@ public class OpinionDatabaseRepository implements OpinionRepository {
     }
 
     @Override
+    public List<Opinion> findAllByProductCode(String productCode) {
+        NamedParameterJdbcTemplate jdbcTemplate = new NamedParameterJdbcTemplate(simpleDriverDataSource);
+        return jdbcTemplate.query(SELECT_ALL_WHERE_PRODUCT_CODE, Map.of("productCode", productCode), databaseMapper::mapOpinion);
+    }
+
+    @Override
     public void removeAll() {
         new JdbcTemplate(simpleDriverDataSource).execute(DELETE_ALL);
     }
@@ -91,6 +105,12 @@ public class OpinionDatabaseRepository implements OpinionRepository {
     public void removeAll(String email) {
         NamedParameterJdbcTemplate jdbcTemplate = new NamedParameterJdbcTemplate(simpleDriverDataSource);
         jdbcTemplate.update(DELETE_ALL_WHERE_CUSTOMER_EMAIL, Map.of("email", email));
+    }
+
+    @Override
+    public void removeAllByProductCode(String productCode) {
+        NamedParameterJdbcTemplate jdbcTemplate = new NamedParameterJdbcTemplate(simpleDriverDataSource);
+        jdbcTemplate.update(DELETE_ALL_WHERE_PRODUCT_CODE, Map.of("productCode", productCode));
     }
 
     @Override

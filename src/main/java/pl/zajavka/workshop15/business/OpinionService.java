@@ -46,6 +46,10 @@ public class OpinionService {
         return opinionRepository.findAll(email);
     }
 
+    public List<Opinion> findAllByProductCode(String productCode) {
+        return opinionRepository.findAllByProductCode(productCode);
+    }
+
     @Transactional
     public void removeAll() {
         opinionRepository.removeAll();
@@ -58,5 +62,10 @@ public class OpinionService {
 
     public boolean customerGivesUnwantedOpinions(String email) {
         return opinionRepository.customerGivesUnwantedOpinions(email);
+    }
+
+    @Transactional
+    public void removeAllByProductCode(String productCode) {
+        opinionRepository.removeAllByProductCode(productCode);
     }
 }
