@@ -36,7 +36,8 @@ public class PurchaseDatabaseRepository implements PurchaseRepository {
                 INNER JOIN PRODUCT AS PROD ON CUS.ID = PROD.PRODUCT_ID
                 WHERE CUS.EMAIL = :email
                 ORDER BY DATE_TIME
-            """;;
+            """;
+    private static final String SELECT_ALL = "SELECT * FROM PURCHASE";
 
     private final SimpleDriverDataSource simpleDriverDataSource;
 
@@ -54,15 +55,11 @@ public class PurchaseDatabaseRepository implements PurchaseRepository {
     }
 
     @Override
-    public void removeAll() {
-        new JdbcTemplate(simpleDriverDataSource).execute(DELETE_ALL);
+    public List<Purchase> findAll() {
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(simpleDriverDataSource);
+        return jdbcTemplate.query(SELECT_ALL, databaseMapper::mapPurchase);
     }
 
-    @Override
-    public void removeAll(String email) {
-        NamedParameterJdbcTemplate jdbcTemplate = new NamedParameterJdbcTemplate(simpleDriverDataSource);
-        jdbcTemplate.update(DELETE_ALL_WHERE_CUSTOMER_EMAIL, Map.of("email", email));
-    }
 
     @Override
     public List<Purchase> findAll(String email) {
@@ -82,5 +79,16 @@ public class PurchaseDatabaseRepository implements PurchaseRepository {
                 ),
                 databaseMapper::mapPurchase
         );
+    }
+
+    @Override
+    public void removeAll() {
+        new JdbcTemplate(simpleDriverDataSource).execute(DELETE_ALL);
+    }
+
+    @Override
+    public void removeAll(String email) {
+        NamedParameterJdbcTemplate jdbcTemplate = new NamedParameterJdbcTemplate(simpleDriverDataSource);
+        jdbcTemplate.update(DELETE_ALL_WHERE_CUSTOMER_EMAIL, Map.of("email", email));
     }
 }

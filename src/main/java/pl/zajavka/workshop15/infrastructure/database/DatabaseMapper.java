@@ -1,10 +1,7 @@
 package pl.zajavka.workshop15.infrastructure.database;
 
 import org.springframework.stereotype.Component;
-import pl.zajavka.workshop15.domain.Customer;
-import pl.zajavka.workshop15.domain.Opinion;
-import pl.zajavka.workshop15.domain.Product;
-import pl.zajavka.workshop15.domain.Purchase;
+import pl.zajavka.workshop15.domain.*;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -87,6 +84,26 @@ public class DatabaseMapper {
                 .dateTime(OffsetDateTime.parse(
                         resultSet.getString("date_time"),
                         DATABASE_DATE_FORMAT).withOffsetSameInstant(ZoneOffset.UTC))
+                .build();
+    }
+
+    public Producer mapProducer(ResultSet resultSet, int rowNumber) throws SQLException {
+        return Producer.builder()
+                .id(resultSet.getLong("id"))
+                .producerName(resultSet.getString("producer_name"))
+                .address(resultSet.getString("address"))
+                .build();
+    }
+
+    public Product mapProduct(ResultSet resultSet, int rowNumber) throws SQLException {
+        return Product.builder()
+                .id(resultSet.getLong("id"))
+                .productCode(resultSet.getString("product_code"))
+                .productName(resultSet.getString("product_name"))
+                .productPrice(resultSet.getBigDecimal("product_price"))
+                .adultsOnly(resultSet.getBoolean("adults_only"))
+                .description(resultSet.getString("description"))
+                .producer(Producer.builder().id(resultSet.getLong("producer_id")).build())
                 .build();
     }
 }

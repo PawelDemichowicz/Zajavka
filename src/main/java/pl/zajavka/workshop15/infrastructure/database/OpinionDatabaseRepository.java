@@ -30,6 +30,8 @@ public class OpinionDatabaseRepository implements OpinionRepository {
                 WHERE CUS.EMAIL = :email
                 ORDER BY DATE_TIME
             """;
+    private static final String SELECT_ALL = "SELECT * FROM OPINION";
+
 
     private final SimpleDriverDataSource simpleDriverDataSource;
 
@@ -47,6 +49,19 @@ public class OpinionDatabaseRepository implements OpinionRepository {
     }
 
     @Override
+    public List<Opinion> findAll() {
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(simpleDriverDataSource);
+        return jdbcTemplate.query(SELECT_ALL, databaseMapper::mapOpinion);
+    }
+
+
+    @Override
+    public List<Opinion> findAll(String email) {
+        NamedParameterJdbcTemplate jdbcTemplate = new NamedParameterJdbcTemplate(simpleDriverDataSource);
+        return jdbcTemplate.query(SELECT_ALL_WHERE_CUSTOMER_EMAIL, Map.of("email", email), databaseMapper::mapOpinion);
+    }
+
+    @Override
     public void removeAll() {
         new JdbcTemplate(simpleDriverDataSource).execute(DELETE_ALL);
     }
@@ -55,11 +70,5 @@ public class OpinionDatabaseRepository implements OpinionRepository {
     public void removeAll(String email) {
         NamedParameterJdbcTemplate jdbcTemplate = new NamedParameterJdbcTemplate(simpleDriverDataSource);
         jdbcTemplate.update(DELETE_ALL_WHERE_CUSTOMER_EMAIL, Map.of("email", email));
-    }
-
-    @Override
-    public List<Opinion> findAll(String email) {
-        NamedParameterJdbcTemplate jdbcTemplate = new NamedParameterJdbcTemplate(simpleDriverDataSource);
-        return jdbcTemplate.query(SELECT_ALL_WHERE_CUSTOMER_EMAIL, Map.of("email", email), databaseMapper::mapOpinion);
     }
 }

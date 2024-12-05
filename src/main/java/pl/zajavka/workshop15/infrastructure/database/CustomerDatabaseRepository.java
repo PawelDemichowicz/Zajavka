@@ -12,6 +12,7 @@ import pl.zajavka.workshop15.business.CustomerRepository;
 import pl.zajavka.workshop15.domain.Customer;
 import pl.zajavka.workshop15.infrastructure.configuration.DatabaseConfiguration;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -25,6 +26,7 @@ public class CustomerDatabaseRepository implements CustomerRepository {
     private static final String SELECT_ONE_WHERE_EMAIL = "SELECT * FROM CUSTOMER WHERE EMAIL = :email";
     private static final String DELETE_ALL = "DELETE FROM CUSTOMER WHERE 1=1";
     private static final String DELETE_WHERE_CUSTOMER_EMAIL = "DELETE FROM CUSTOMER WHERE EMAIL = :email";
+    private static final String SELECT_ALL = "SELECT * FROM CUSTOMER";
     private final SimpleDriverDataSource simpleDriverDataSource;
     private final DatabaseMapper databaseMapper;
 
@@ -54,10 +56,17 @@ public class CustomerDatabaseRepository implements CustomerRepository {
     }
 
     @Override
+    public List<Customer> findAll() {
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(simpleDriverDataSource);
+        return jdbcTemplate.query(SELECT_ALL, databaseMapper::mapCustomer);
+    }
+
+    @Override
     public void removeAll() {
         new JdbcTemplate(simpleDriverDataSource).execute(DELETE_ALL);
     }
 
+    @Override
     public void remove(String email) {
         NamedParameterJdbcTemplate jdbcTemplate = new NamedParameterJdbcTemplate(simpleDriverDataSource);
         jdbcTemplate.update(DELETE_WHERE_CUSTOMER_EMAIL, Map.of("email", email));

@@ -14,7 +14,7 @@ import java.util.stream.IntStream;
 public class RandomDataPreparationService {
 
     Customer createCustomer() {
-        String name = randomString(65,90,1) + randomString(97,122,10) + randomString(48,57,2);
+        String name = randomString(65, 90, 1) + randomString(97, 122, 10) + randomString(48, 57, 2);
         return Customer.builder()
                 .userName(name + "user")
                 .email(name + "@gmail.com")
@@ -37,14 +37,14 @@ public class RandomDataPreparationService {
 
     Producer createProducer() {
         return Producer.builder()
-                .producerName(randomString(65,90,1) + randomString(97,122,10))
+                .producerName(randomString(65, 90, 1) + randomString(97, 122, 10))
                 .address("Some address")
                 .build();
     }
 
     Product createProduct(Producer producer) {
         return Product.builder()
-                .productCode(randomString(65,90,3) + randomString(97,122,4) + randomString(48,57,2))
+                .productCode(randomString(65, 90, 3) + randomString(97, 122, 4) + randomString(48, 57, 2))
                 .productName("Product name")
                 .productPrice(BigDecimal.valueOf(1500.19))
                 .adultsOnly(false)

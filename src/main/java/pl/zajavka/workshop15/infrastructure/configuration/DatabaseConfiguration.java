@@ -25,7 +25,7 @@ public class DatabaseConfiguration {
 
     @Bean
     public SimpleDriverDataSource simpleDriverDataSource() {
-        SimpleDriverDataSource dataSource = new SimpleDriverDataSource( );
+        SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
         dataSource.setDriver(new Driver());
         dataSource.setUrl("jdbc:postgresql://localhost:5432/zajavka_store");
         dataSource.setUsername("postgres");
