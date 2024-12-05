@@ -22,9 +22,10 @@ import static pl.zajavka.workshop15.infrastructure.configuration.DatabaseConfigu
 @AllArgsConstructor
 public class ProductDatabaseRepository implements ProductRepository {
 
-    private static final String DELETE_ALL = "DELETE FROM PRODUCT WHERE 1=1";
     private static final String SELECT_ALL = "SELECT * FROM PRODUCT";
     private static final String SELECT_WHERE_PRODUCT_CODE = "SELECT * FROM PRODUCT WHERE PRODUCT_CODE = :productCode";
+    private static final String DELETE_ALL = "DELETE FROM PRODUCT WHERE 1=1";
+    private static final String DELETE_BY_PRODUCT_CODE = "DELETE FROM PRODUCT WHERE PRODUCT_CODE = :productCode";
 
     private final SimpleDriverDataSource simpleDriverDataSource;
 
@@ -62,6 +63,11 @@ public class ProductDatabaseRepository implements ProductRepository {
         return jdbcTemplate.query(SELECT_ALL, databaseMapper::mapProduct);
     }
 
+    @Override
+    public void remove(String productCode) {
+        NamedParameterJdbcTemplate jdbcTemplate = new NamedParameterJdbcTemplate(simpleDriverDataSource);
+        jdbcTemplate.update(DELETE_BY_PRODUCT_CODE, Map.of("productCode", productCode));
+    }
 
     @Override
     public void removeAll() {

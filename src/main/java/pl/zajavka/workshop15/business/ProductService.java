@@ -11,6 +11,8 @@ import java.util.List;
 @AllArgsConstructor
 public class ProductService {
 
+    private OpinionService opinionService;
+    private PurchaseService purchaseService;
     private ProductRepository productRepository;
 
     @Transactional
@@ -30,5 +32,12 @@ public class ProductService {
     public Product find(String productCode) {
         return productRepository.find(productCode)
                 .orElseThrow(() -> new RuntimeException("Product with product code: [%s] is missing".formatted(productCode)));
+    }
+
+    @Transactional
+    public void removeCompletely(String productCode) {
+        opinionService.removeAllByProductCode(productCode);
+        purchaseService.removeAllByProductCode(productCode);
+        productRepository.remove(productCode);
     }
 }
