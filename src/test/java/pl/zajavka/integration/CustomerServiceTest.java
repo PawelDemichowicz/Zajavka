@@ -113,4 +113,18 @@ public class CustomerServiceTest {
                 opinionService.findAll(customer.getEmail())
         );
     }
+
+    @Test
+    @DisplayName("Check remove customers whose give unwanted opinions")
+    void thatCustomerGivingUnwantedOpinionsAreRemoved() {
+        // given
+        reloadDataService.reloadData();
+        assertEquals(100, customerService.findAll().size());
+
+        // when
+        customerService.removeUnwantedCustomers();
+
+        // then
+        assertEquals(67, customerService.findAll().size());
+    }
 }

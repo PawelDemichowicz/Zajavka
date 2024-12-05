@@ -21,17 +21,24 @@ import static pl.zajavka.workshop15.infrastructure.configuration.DatabaseConfigu
 @AllArgsConstructor
 public class OpinionDatabaseRepository implements OpinionRepository {
 
+    private static final String SELECT_ALL = "SELECT * FROM OPINION";
     private static final String DELETE_ALL = "DELETE FROM OPINION WHERE 1=1";
-    private static final String DELETE_ALL_WHERE_CUSTOMER_EMAIL =
-            "DELETE FROM OPINION WHERE CUSTOMER_ID IN (SELECT ID FROM CUSTOMER WHERE EMAIL = :email)";
+
     private static final String SELECT_ALL_WHERE_CUSTOMER_EMAIL = """
             SELECT * FROM OPINION AS OPN
                 INNER JOIN CUSTOMER AS CUS ON CUS.ID = OPN.CUSTOMER_ID
                 WHERE CUS.EMAIL = :email
                 ORDER BY DATE_TIME
             """;
-    private static final String SELECT_ALL = "SELECT * FROM OPINION";
+    private static final String DELETE_ALL_WHERE_CUSTOMER_EMAIL =
+            "DELETE FROM OPINION WHERE CUSTOMER_ID IN (SELECT ID FROM CUSTOMER WHERE EMAIL = :email)";
+
     private static final String SELECT_UNWANTED_OPINIONS = "SELECT * FROM OPINION WHERE STARS < 4";
+    private static final String SELECT_UNWANTED_OPINIONS_FOR_EMAIL = """
+            SELECT * FROM OPINION
+            WHERE STARS < 4
+            AND CUSTOMER_ID IN (SELECT ID FROM CUSTOMER WHERE EMAIL = :email)
+            """;
     private static final String DELETE_UNWANTED_OPINIONS = "DELETE FROM OPINION WHERE STARS < 4";
 
 
@@ -84,5 +91,13 @@ public class OpinionDatabaseRepository implements OpinionRepository {
     public void removeAll(String email) {
         NamedParameterJdbcTemplate jdbcTemplate = new NamedParameterJdbcTemplate(simpleDriverDataSource);
         jdbcTemplate.update(DELETE_ALL_WHERE_CUSTOMER_EMAIL, Map.of("email", email));
+    }
+
+    @Override
+    public boolean customerGivesUnwantedOpinions(String email) {
+        NamedParameterJdbcTemplate jdbcTemplate = new NamedParameterJdbcTemplate(simpleDriverDataSource);
+        return !jdbcTemplate
+                .query(SELECT_UNWANTED_OPINIONS_FOR_EMAIL, Map.of("email", email), databaseMapper::mapOpinion)
+                .isEmpty();
     }
 }
