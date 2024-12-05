@@ -3,7 +3,6 @@ package pl.zajavka.workshop15.business;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.zajavka.workshop15.domain.Customer;
 import pl.zajavka.workshop15.domain.Opinion;
 
 import java.util.List;
