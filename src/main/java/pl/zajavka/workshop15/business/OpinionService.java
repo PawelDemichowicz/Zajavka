@@ -38,6 +38,10 @@ public class OpinionService {
         return opinionRepository.findAll();
     }
 
+    public List<Opinion> findUnwantedOpinions() {
+        return opinionRepository.findUnwantedOpinions();
+    }
+
     public List<Opinion> findAll(String email) {
         return opinionRepository.findAll(email);
     }
@@ -45,5 +49,10 @@ public class OpinionService {
     @Transactional
     public void removeAll() {
         opinionRepository.removeAll();
+    }
+
+    @Transactional
+    public void removeUnwantedOpinions() {
+        opinionRepository.removeUnwantedOpinions();
     }
 }
