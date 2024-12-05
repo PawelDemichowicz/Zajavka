@@ -33,7 +33,7 @@ public class PurchaseDatabaseRepository implements PurchaseRepository {
     private static final String SELECT_ALL_WHERE_CUSTOMER_EMAIL_AND_PRODUCT_CODE = """
             SELECT * FROM PURCHASE AS PUR
                 INNER JOIN CUSTOMER AS CUS ON CUS.ID = PUR.CUSTOMER_ID
-                INNER JOIN PRODUCT AS PROD ON CUS.ID = PROD.PRODUCT_ID
+                INNER JOIN PRODUCT AS PROD ON PROD.ID = PUR.PRODUCT_ID
                 WHERE CUS.EMAIL = :email
                 ORDER BY DATE_TIME
             """;
