@@ -15,6 +15,7 @@ public class CustomerService {
     private CustomerRepository customerRepository;
     private OpinionRepository opinionRepository;
     private PurchaseRepository purchaseRepository;
+    private OpinionService opinionService;
 
     @Transactional
     public Customer create(Customer customer) {
@@ -49,6 +50,14 @@ public class CustomerService {
         purchaseRepository.removeAll(email);
         opinionRepository.removeAll(email);
         customerRepository.remove(email);
+    }
+
+    @Transactional
+    public void removeUnwantedCustomers() {
+        customerRepository.findAll().stream()
+                .filter(customer -> !isOlderThan40(customer))
+                .filter(customer -> opinionService.customerGivesUnwantedOpinions(customer.getEmail()))
+                .forEach(customer -> remove(customer.getEmail()));
     }
 
     private boolean isOlderThan40(Customer customer) {
