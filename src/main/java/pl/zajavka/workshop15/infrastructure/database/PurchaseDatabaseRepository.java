@@ -30,6 +30,13 @@ public class PurchaseDatabaseRepository implements PurchaseRepository {
                 WHERE CUS.EMAIL = :email
                 ORDER BY DATE_TIME
             """;
+    private static final String SELECT_ALL_WHERE_CUSTOMER_EMAIL_AND_PRODUCT_CODE = """
+            SELECT * FROM PURCHASE AS PUR
+                INNER JOIN CUSTOMER AS CUS ON CUS.ID = PUR.CUSTOMER_ID
+                INNER JOIN PRODUCT AS PROD ON CUS.ID = PROD.PRODUCT_ID
+                WHERE CUS.EMAIL = :email
+                ORDER BY DATE_TIME
+            """;;
 
     private final SimpleDriverDataSource simpleDriverDataSource;
 
@@ -62,5 +69,18 @@ public class PurchaseDatabaseRepository implements PurchaseRepository {
         NamedParameterJdbcTemplate jdbcTemplate = new NamedParameterJdbcTemplate(simpleDriverDataSource);
         return jdbcTemplate
                 .query(SELECT_ALL_WHERE_CUSTOMER_EMAIL, Map.of("email", email), databaseMapper::mapPurchase);
+    }
+
+    @Override
+    public List<Purchase> findAll(String email, String productCode) {
+        NamedParameterJdbcTemplate jdbcTemplate = new NamedParameterJdbcTemplate(simpleDriverDataSource);
+        return jdbcTemplate.query(
+                SELECT_ALL_WHERE_CUSTOMER_EMAIL_AND_PRODUCT_CODE,
+                Map.of(
+                        "email", email,
+                        "product_code", productCode
+                ),
+                databaseMapper::mapPurchase
+        );
     }
 }
