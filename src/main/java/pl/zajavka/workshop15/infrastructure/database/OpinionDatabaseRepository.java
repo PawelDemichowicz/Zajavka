@@ -9,7 +9,6 @@ import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.stereotype.Repository;
 import pl.zajavka.workshop15.business.OpinionRepository;
 import pl.zajavka.workshop15.domain.Opinion;
-import pl.zajavka.workshop15.domain.Purchase;
 import pl.zajavka.workshop15.infrastructure.configuration.DatabaseConfiguration;
 
 import java.util.List;
